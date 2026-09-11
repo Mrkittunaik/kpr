@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KPR Design & Laser | Precision CNC Manufacturing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue-900:#0B2E5C; --blue-800:#0E3A73; --blue-700:#12459C; --blue-600:#1B5FD6; --blue-500:#2E78F5;
+    --blue-100:#E7EFFD; --blue-50:#F3F7FE;
+    --white:#FFFFFF; --ink:#101828;
+    --gray-600:#4B5468; --gray-400:#8A93A6; --border:#E3E8F0;
+    --radius:5px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);line-height:1.6;}
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:600;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;object-fit:cover;}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:var(--radius);font-weight:600;font-size:15px;cursor:pointer;border:1.5px solid transparent;transition:.15s ease;}
+  .btn-primary{background:var(--blue-600);color:#fff;}
+  .btn-primary:hover{background:var(--blue-700);}
+  .btn-outline{border-color:#fff;color:#fff;background:transparent;}
+  .btn-outline:hover{background:rgba(255,255,255,.1);}
+  .btn-light{background:#fff;color:var(--blue-900);}
+  .btn-light:hover{background:var(--blue-50);}
+
+  /* Header */
+  header{background:#fff;position:sticky;top:0;z-index:50;border-bottom:1px solid var(--border);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:80px;}
+  .logo-badge{display:flex;align-items:center;gap:10px;background:transparent;padding:0;margin-left:0;clip-path:none;}
+  .logo-badge span{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:var(--blue-900);white-space:nowrap;}
+  .nav-links{display:flex;gap:30px;align-items:center;}
+  .nav-links a{font-size:14.5px;font-weight:500;color:var(--gray-600);}
+  .nav-links a.active,.nav-links a:hover{color:var(--blue-900);}
+  .nav-cta{display:flex;gap:16px;align-items:center;}
+  .nav-cta .btn-outline{border-color:transparent;color:var(--blue-700);padding:0;}
+  .nav-cta .btn-outline:hover{background:transparent;text-decoration:underline;}
+  .mobile-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--blue-900);width:40px;height:40px;align-items:center;justify-content:center;}
+  .mobile-menu{display:none;flex-direction:column;gap:2px;padding:12px 0;border-top:1px solid var(--border);}
+  .mobile-menu a{padding:12px 4px;font-size:15px;font-weight:500;color:var(--blue-900);border-bottom:1px solid var(--border);}
+  .mobile-menu.open{display:flex;}
+
+  /* Hero */
+  .hero{position:relative;background:var(--blue-900);overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;z-index:0;background-color:#0b2e5c;background-image:
+      linear-gradient(120deg,rgba(6,20,40,.88),rgba(11,46,92,.80)),
+      url('https://images.unsplash.com/photo-1759847552281-60e45956124d?q=80&w=1920&auto=format&fit=crop');
+    background-size:cover;background-position:center;background-repeat:no-repeat;}
+  .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:64px 0 20px;position:relative;z-index:1;}
+  .hero-copy{text-align:left;}
+  .hero-copy h1{font-size:52px;line-height:1.12;color:#fff;margin-bottom:20px;letter-spacing:-.8px;font-weight:800;}
+  .hero-copy p{font-size:17px;color:#D7E2F5;max-width:520px;margin:0 0 30px;font-weight:500;line-height:1.6;}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .hero-actions .btn{padding:15px 26px;}
+  .hero-actions .btn-primary{background:var(--blue-600);}
+  .hero-actions .btn-secondary{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);}
+  .hero-actions .btn-secondary:hover{background:rgba(255,255,255,.18);}
+  .hero-actions .btn svg{width:16px;height:16px;flex-shrink:0;}
+  .hero-photo-wrap{position:relative;max-width:380px;margin:0 auto;}
+  .hero-photo{border-radius:5px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 20px 40px rgba(0,0,0,.35);}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;}
+  .hero-badge{position:absolute;left:-16px;bottom:-14px;background:#fff;border-radius:5px;padding:12px 16px;max-width:200px;box-shadow:0 14px 34px rgba(0,0,0,.25);text-align:left;}
+  .hero-badge .tag{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--blue-600);text-transform:uppercase;margin-bottom:5px;display:block;}
+  .hero-badge h4{font-size:13px;color:var(--blue-900);line-height:1.3;margin-bottom:5px;}
+  .hero-badge p{font-size:11px;color:var(--gray-600);margin:0;}
+
+  section{padding:48px 0;}
+  .section-head{max-width:640px;margin-bottom:32px;}
+  .section-tag-wrap{display:inline-block;background:var(--blue-600);color:#fff;padding:8px 22px 8px 16px;font-size:13.5px;font-weight:600;margin-bottom:14px;clip-path:polygon(0 0,100% 0,94% 100%,0 100%);}
+  .section-head h2{font-size:30px;color:var(--blue-900);letter-spacing:-.4px;}
+  .section-head p{color:var(--gray-600);font-size:15.5px;margin-top:10px;}
+
+  /* Services with angled accent */
+  .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .service-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#fff;transition:.2s ease;}
+  .service-card:hover{border-color:var(--blue-500);box-shadow:0 10px 28px rgba(11,46,92,.1);transform:translateY(-3px);}
+  .service-card .img-wrap{height:160px;position:relative;}
+  .service-card .img-crop{width:100%;height:100%;overflow:hidden;position:relative;}
+  .service-card .img-crop img{width:100%;height:100%;}
+  .service-card .img-wrap img{width:100%;height:100%;}
+  .service-card .img-crop::after{content:'';position:absolute;top:0;left:0;width:100%;height:8px;background:var(--blue-600);clip-path:polygon(0 0,30% 0,20% 100%,0 100%);}
+  .service-icon{position:absolute;right:14px;bottom:-18px;width:40px;height:40px;border-radius:var(--radius);background:var(--blue-600);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(11,46,92,.25);}
+  .service-icon svg{width:20px;height:20px;}
+  .service-card .body{padding:20px;}
+  .service-card h3{font-size:16.5px;color:var(--blue-900);margin-bottom:8px;}
+  .service-card p{font-size:13.5px;color:var(--gray-600);margin-bottom:14px;}
+  .service-card .link{font-size:13.5px;font-weight:600;color:var(--blue-600);display:inline-flex;align-items:center;gap:6px;}
+
+  /* Stats band */
+  .stats-band{background:var(--blue-900);padding:64px 0;}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:28px 20px;text-align:center;}
+  .stat-icon{width:40px;height:40px;border-radius:var(--radius);background:var(--blue-600);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+  .stat-icon svg{width:20px;height:20px;}
+  .stat-card strong{font-family:'Space Grotesk',sans-serif;font-size:32px;display:block;color:#fff;letter-spacing:-.5px;}
+  .stat-card span{font-size:13.5px;color:#9FB3D9;margin-top:6px;display:block;}
+
+  /* About - dark with collage */
+  .about-section{background:var(--blue-900);color:#fff;position:relative;overflow:hidden;}
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;position:relative;}
+  .collage{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .collage img{border-radius:var(--radius);width:100%;}
+  .collage .tall{grid-row:span 2;aspect-ratio:1/2.05;}
+  .collage .short{aspect-ratio:1/0.95;}
+  .about-tag{color:#7FADFF;font-weight:600;font-size:13.5px;margin-bottom:12px;display:block;}
+  .about-grid h2{font-size:30px;color:#fff;margin-bottom:16px;letter-spacing:-.4px;}
+  .about-grid p{color:#B8C9E8;font-size:15px;margin-bottom:26px;}
+  .about-features{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .about-feature-icon{width:38px;height:38px;border-radius:var(--radius);background:rgba(255,255,255,.1);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+  .about-feature-icon svg{width:19px;height:19px;}
+  .about-features h4{font-size:15.5px;color:#fff;margin-bottom:6px;}
+  .about-features p{font-size:13.5px;color:#9FB3D9;margin-bottom:0;}
+
+  /* Testimonials */
+  .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .clients-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .client-card{border:1px solid var(--border);border-radius:var(--radius);padding:24px 20px;text-align:center;background:#fff;transition:.2s ease;}
+  .client-card:hover{border-color:var(--blue-500);box-shadow:0 10px 28px rgba(11,46,92,.1);transform:translateY(-3px);}
+  .client-logo{width:100%;height:70px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .client-logo img{max-width:100%;max-height:100%;object-fit:contain;}
+  .client-card h4{font-size:14px;color:var(--blue-900);margin-bottom:14px;letter-spacing:-.1px;}
+  .client-card .link{font-size:12.5px;font-weight:600;color:var(--blue-600);border:1px solid var(--blue-100);border-radius:var(--radius);padding:9px 0;display:block;}
+  .client-card .link:hover{background:var(--blue-50);}
+
+  /* Why choose us */
+  .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .feature-card{border:1px solid var(--border);border-radius:var(--radius);padding:26px 22px;background:#fff;transition:.2s ease;}
+  .feature-card:hover{border-color:var(--blue-500);box-shadow:0 10px 28px rgba(11,46,92,.1);transform:translateY(-3px);}
+  .feature-icon{width:44px;height:44px;border-radius:var(--radius);background:var(--blue-100);color:var(--blue-600);display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .feature-icon svg{width:22px;height:22px;}
+  .feature-card h3{font-size:16px;color:var(--blue-900);margin-bottom:8px;}
+  .feature-card p{font-size:13.5px;color:var(--gray-600);}
+
+  /* Process steps */
+  .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;}
+  .process-card{position:relative;background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+  .process-card .img-wrap{height:140px;position:relative;overflow:hidden;}
+  .process-card .img-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .process-card .body{padding:20px 20px 22px;}
+  .process-num{position:absolute;top:12px;left:12px;width:34px;height:34px;border-radius:50%;background:var(--blue-600);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;font-family:'Space Grotesk',sans-serif;box-shadow:0 6px 14px rgba(0,0,0,.25);z-index:1;}
+  .process-card h3{font-size:15.5px;color:var(--blue-900);margin-bottom:8px;}
+  .process-card p{font-size:13px;color:var(--gray-600);}
+
+  /* Industries */
+  .industry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .industry-card{display:flex;align-items:center;gap:16px;border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;background:#fff;transition:.2s ease;}
+  .industry-card:hover{border-color:var(--blue-500);box-shadow:0 10px 28px rgba(11,46,92,.1);}
+  .industry-icon{width:46px;height:46px;flex-shrink:0;border-radius:var(--radius);background:var(--blue-900);color:#fff;display:flex;align-items:center;justify-content:center;}
+  .industry-icon svg{width:22px;height:22px;}
+  .industry-photo{width:64px;height:64px;flex-shrink:0;border-radius:var(--radius);overflow:hidden;}
+  .industry-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .industry-card h4{font-size:15px;color:var(--blue-900);margin-bottom:4px;}
+  .industry-card p{font-size:12.5px;color:var(--gray-600);margin:0;}
+
+  /* Certifications */
+  .cert-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .cert-card{text-align:center;border:1px solid var(--border);border-radius:var(--radius);padding:24px 16px;background:#fff;}
+  .cert-icon{width:48px;height:48px;border-radius:50%;background:var(--blue-50);color:var(--blue-600);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+  .cert-icon svg{width:24px;height:24px;}
+  .cert-card h4{font-size:14.5px;color:var(--blue-900);margin-bottom:4px;}
+  .cert-card p{font-size:12px;color:var(--gray-600);margin:0;}
+  .testimonial-card{border:1px solid var(--border);border-top:3px solid var(--blue-600);border-radius:var(--radius);padding:26px;background:#fff;display:flex;flex-direction:column;gap:16px;}
+  .testimonial-stars{color:var(--blue-600);font-size:14px;letter-spacing:2px;}
+  .testimonial-quote{font-size:14.5px;color:var(--ink);line-height:1.65;flex:1;}
+  .testimonial-person{display:flex;align-items:center;gap:12px;border-top:1px solid var(--border);padding-top:14px;}
+  .testimonial-avatar{width:38px;height:38px;border-radius:var(--radius);background:var(--blue-900);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;font-family:'Space Grotesk',sans-serif;}
+  .testimonial-person strong{display:block;font-size:13.5px;color:var(--ink);}
+  .testimonial-person span{font-size:12.5px;color:var(--gray-600);}
+
+  /* FAQ - dark */
+  .faq-section{background:var(--blue-900);color:#fff;}
+  .faq-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start;}
+  .faq-grid img{border-radius:var(--radius);width:100%;margin-top:24px;aspect-ratio:16/10;}
+  .faq-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;}
+  .faq-q{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;cursor:pointer;font-size:14.5px;font-weight:600;color:#fff;gap:12px;}
+  .faq-q svg{width:18px;height:18px;flex-shrink:0;transition:.2s;}
+  .faq-item.open .faq-q svg{transform:rotate(180deg);}
+  .faq-item.open .faq-q{background:var(--blue-600);}
+  .faq-a{max-height:0;overflow:hidden;transition:.25s ease;padding:0 18px;}
+  .faq-item.open .faq-a{max-height:200px;padding:4px 18px 18px;}
+  .faq-a p{font-size:13.5px;color:#B8C9E8;}
+
+  /* Blog cards */
+  .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .blog-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#fff;}
+  .blog-card img{aspect-ratio:16/10;width:100%;}
+  .blog-card .body{padding:18px 20px;}
+  .blog-meta{display:flex;gap:14px;font-size:12px;color:var(--gray-600);margin-bottom:10px;flex-wrap:wrap;}
+  .blog-card h4{font-size:15.5px;color:var(--blue-900);}
+
+  /* Contact */
+  .cta-section{background:linear-gradient(120deg,var(--blue-700),var(--blue-900));border-radius:var(--radius);color:#fff;padding:52px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;}
+  .cta-section h2{font-size:28px;margin-bottom:10px;}
+  .cta-section p{color:#C9D6EE;font-size:15px;}
+  .cta-form{background:#fff;border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:12px;}
+  .cta-form input,.cta-form textarea{border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;font-family:inherit;font-size:14px;color:var(--ink);}
+  .cta-form input:focus,.cta-form textarea:focus{outline:2px solid var(--blue-500);border-color:transparent;}
+  .cta-form button{background:var(--blue-600);color:#fff;border:none;border-radius:var(--radius);padding:13px;font-weight:700;font-size:15px;cursor:pointer;transition:.15s ease;}
+  .cta-form button:hover{background:var(--blue-700);transform:translateY(-1px);box-shadow:0 6px 16px rgba(27,95,214,.3);}
+
+  /* Footer */
+  footer{background:#08182F;color:#B8C0D1;padding:52px 0 24px;}
+  .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:36px;margin-bottom:36px;}
+  .footer-grid h4{color:#fff;font-size:15px;margin-bottom:16px;}
+  .footer-grid ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .footer-grid a{font-size:14px;color:#9FB3D9;}
+  .footer-grid a:hover{color:#fff;}
+  .footer-logo{display:inline-flex;align-items:center;gap:10px;background:var(--blue-600);padding:12px 20px 12px 16px;clip-path:polygon(0 0,100% 0,90% 100%,0 100%);}
+  .footer-logo span{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#fff;white-space:nowrap;}
+  .footer-desc{font-size:14px;color:#8A93A6;margin-bottom:16px;max-width:280px;}
+  .footer-contact{font-size:14px;display:flex;flex-direction:column;gap:8px;}
+  .footer-bottom{border-top:1px solid #1A2B47;padding-top:22px;display:flex;justify-content:space-between;font-size:13px;color:#7A8296;}
+  .social-row{display:flex;gap:10px;margin-top:16px;}
+  .social-row a{width:34px;height:34px;border-radius:var(--radius);background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;}
+  .social-row svg{width:16px;height:16px;}
+
+  @media(max-width:900px){
+    .nav-links,.nav-cta{display:none;}
+    .mobile-toggle{display:block;}
+    .logo-badge{margin-left:0;clip-path:none;padding:10px 16px;border-radius:var(--radius);}
+    .logo-badge span{font-size:16px;}
+    .nav{height:64px;}
+    .hero-inner{grid-template-columns:1fr;padding:32px 0 44px;gap:22px;}
+    .hero-copy{text-align:center;display:flex;flex-direction:column;align-items:center;order:1;}
+    .hero-copy h1{font-size:28px;line-height:1.22;}
+    .hero-copy p{font-size:15px;margin-left:auto;margin-right:auto;}
+    .hero-actions{justify-content:center;order:2;}
+    .hero-photo-wrap{max-width:240px;margin:8px auto 0;order:3;}
+    .hero-badge{display:none;}
+    section{padding:36px 0;}
+    .section-head{margin-bottom:24px;}
+    .section-tag-wrap{font-size:12.5px;padding:7px 18px 7px 14px;}
+    .section-head h2{font-size:24px;}
+    .services-grid{grid-template-columns:repeat(2,1fr);gap:14px;}
+    .service-card .img-wrap{height:110px;}
+    .service-card .body{padding:14px;}
+    .service-card h3{font-size:14.5px;}
+    .service-card p{font-size:12.5px;margin-bottom:10px;}
+    .stats-band{padding:40px 0;}
+    .stats-grid{grid-template-columns:repeat(4,1fr);gap:8px;}
+    .stat-card{padding:14px 6px;}
+    .stat-card strong{font-size:19px;}
+    .stat-card span{font-size:10.5px;}
+    .about-grid,.faq-grid{grid-template-columns:1fr;gap:32px;}
+    .collage{gap:10px;}
+    .about-grid h2{font-size:24px;}
+    .about-features{grid-template-columns:1fr 1fr;gap:16px;}
+    .testimonials-grid,.blog-grid{grid-template-columns:1fr;}
+    .clients-grid{grid-template-columns:repeat(2,1fr);gap:14px;}
+    .feature-grid,.process-grid{grid-template-columns:repeat(2,1fr);gap:14px;}
+    .feature-card{padding:18px 16px;}
+    .process-card .body{padding:16px;}
+    .process-card .img-wrap{height:110px;}
+    .industry-grid{grid-template-columns:1fr;}
+    .cert-grid{grid-template-columns:repeat(2,1fr);gap:14px;}
+    .client-card{padding:18px 14px;}
+    .client-logo{height:54px;margin-bottom:10px;}
+    .faq-q{font-size:13.5px;padding:14px 16px;}
+    .faq-item.open .faq-a{max-height:260px;}
+    .cta-section{grid-template-columns:1fr;padding:26px 20px;border-radius:var(--radius);}
+    .cta-section h2{font-size:22px;}
+    footer{padding:40px 0 20px;}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:28px;margin-bottom:28px;}
+    .footer-bottom{flex-direction:column;gap:8px;align-items:flex-start;}
+  }
+  @media(max-width:560px){
+    .container{padding:0 18px;}
+    .hero-copy h1{font-size:24px;}
+    .hero-copy p{font-size:14px;}
+    .hero-actions{flex-direction:column;}
+    .hero-actions .btn{width:100%;justify-content:center;}
+    .hero-photo-wrap{max-width:240px;}
+    .section-head h2{font-size:21px;}
+    .services-grid{grid-template-columns:1fr;}
+    .feature-grid,.process-grid,.cert-grid{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:repeat(4,1fr);gap:6px;}
+    .stat-card{padding:10px 4px;}
+    .stat-card strong{font-size:15px;}
+    .stat-card span{font-size:9px;line-height:1.25;}
+    .stat-icon{width:34px;height:34px;margin-bottom:12px;}
+    .stat-icon svg{width:17px;height:17px;}
+    .about-features{grid-template-columns:1fr;}
+    .collage{grid-template-columns:1fr;}
+    .collage .tall{aspect-ratio:16/11;grid-row:auto;}
+    .collage .short{aspect-ratio:16/11;}
+    .faq-q{font-size:13px;line-height:1.4;}
+    .footer-grid{grid-template-columns:1fr;gap:26px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo-badge"><span>KPR Design &amp; Laser</span></div>
+    <nav class="nav-links">
+      <a href="#home" class="active">Home</a>
+      <a href="#services">Services</a>
+      <a href="#industries">Industries</a>
+      <a href="#about">About us</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-outline">Book online</a>
+      <a href="#contact" class="btn btn-primary">Get a quote</a>
+    </div>
+    <button class="mobile-toggle" onclick="document.getElementById('mmenu').classList.toggle('open')">&#9776;</button>
+  </div>
+  <div class="container mobile-menu" id="mmenu">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#industries">Industries</a>
+    <a href="#about">About us</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <h1>Engineer precision. Manufacturing excellence.</h1>
+      <p>High-performance CNC machinery, expert fabrication and scalable manufacturing solutions built for industry. From precision laser cutting to full-scale custom fabrication, we partner with businesses across sectors to deliver durable, accurate and on-time results &mdash; backed by a decade of hands-on engineering expertise.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Get instant quote</a>
+        <a href="mailto:info@kprdesignlaser.com" class="btn btn-secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>Email us</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo">
+        <img src="https://static.wixstatic.com/media/e4c2dd_5ee7bf7ac7ce4d4db9d65b3c20707a51~mv2.png/v1/fill/w_980,h_1137,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/4e2b3bc2-e194-4195-84b8-7c90b82d44fe.png" alt="Pranitha Rani, founder of KPR Design & Laser">
+      </div>
+      <div class="hero-badge">
+        <span class="tag">A proud milestone</span>
+        <h4>The only woman entrepreneur in fabrication</h4>
+        <p>At KPR, we don't just build products, we build trust.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="padding-top:56px;">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag-wrap">Our core services</span>
+      <h2>From fabrication to finishing &mdash; we do it all</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="img-wrap"><div class="img-crop"><img src="https://static.wixstatic.com/media/e4c2dd_2859a3f397ab4ec48864da7e3ae61663~mv2.jpg/v1/fill/w_500,h_320,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/CNC%20Laser%20Cutting.jpg" alt="CNC laser cutting"></div>
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+        </div>
+        <div class="body">
+          <h3>CNC laser cutting</h3>
+          <p>High-precision laser cutting for complex geometries in various metals, ensuring clean edges and accuracy.</p>
+          <a href="#" class="link">Learn more &#8594;</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="img-wrap"><div class="img-crop"><img src="https://static.wixstatic.com/media/e4c2dd_0c5f7e8b66054a77816eff042c9a08e7~mv2.jpeg/v1/fill/w_500,h_320,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/WhatsApp%20Image%202026-08-26%20at%202_43_49%20PM.jpeg" alt="CNC bending"></div>
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+        </div>
+        <div class="body">
+          <h3>CNC bending</h3>
+          <p>Advanced CNC press brake services providing accurate angles and consistent results for complex parts.</p>
+          <a href="#" class="link">Learn more &#8594;</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="img-wrap"><div class="img-crop"><img src="https://static.wixstatic.com/media/e4c2dd_905227b73791422eb03759ad3648a202~mv2.jpg/v1/fill/w_500,h_320,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/3d663756-0b9e-4cfc-bf5a-d49df11742b9.jpg" alt="Sheet metal fabrication"></div>
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        </div>
+        <div class="body">
+          <h3>Sheet metal fabrication</h3>
+          <p>Comprehensive fabrication solutions from design to prototype, built to precision engineering standards.</p>
+          <a href="#" class="link">Learn more &#8594;</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="img-wrap"><div class="img-crop"><img src="https://static.wixstatic.com/media/e4c2dd_f26ff51d54fe4f81a82dd128bb0c69d9~mv2.jpg/v1/fill/w_500,h_320,al_c,q_80,enc_auto/3015d00c-765e-4c49-8412-2c95a55af63f.jpg" alt="Powder coating"></div>
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6"/><path d="M5 10l7-4 7 4v6l-7 4-7-4z"/><path d="M12 22v-6"/></svg></div>
+        </div>
+        <div class="body">
+          <h3>Powder coating &amp; finishing</h3>
+          <p>Durable, aesthetic surface treatments offering superior corrosion resistance and a lasting finish.</p>
+          <a href="#" class="link">Learn more &#8594;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why-us" style="background:var(--blue-50);">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag-wrap">Why choose KPR</span>
+      <h2>Built on precision, backed by trust</h2>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Guaranteed quality</h3>
+        <p>Every part inspected in-house to engineering-grade tolerances before it ships.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>Fast turnaround</h3>
+        <p>Quotes within 24 hours and most orders delivered in days, not weeks.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></div>
+        <h3>One-stop manufacturing</h3>
+        <p>Cutting, bending, fabrication and finishing under a single roof, no subcontracting.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Skilled team</h3>
+        <p>25+ trained engineers and operators overseeing every stage of production.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag-wrap">How we work</span>
+      <h2>From drawing to delivery in four steps</h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-card">
+        <div class="img-wrap">
+          <img src="https://images.unsplash.com/photo-1600869009498-8d429f88d4f5?q=80&w=500&h=320&auto=format&fit=crop" alt="Share your drawing">
+          <div class="process-num">1</div>
+        </div>
+        <div class="body">
+          <h3>Share your drawing</h3>
+          <p>Send us your CAD file or specs and we review feasibility right away.</p>
+        </div>
+      </div>
+      <div class="process-card">
+        <div class="img-wrap">
+          <img src="https://images.unsplash.com/photo-1709880945165-d2208c6ad2ec?q=80&w=500&h=320&auto=format&fit=crop" alt="Get a fast quote">
+          <div class="process-num">2</div>
+        </div>
+        <div class="body">
+          <h3>Get a fast quote</h3>
+          <p>Receive accurate pricing and lead time within 24 hours.</p>
+        </div>
+      </div>
+      <div class="process-card">
+        <div class="img-wrap">
+          <img src="https://static.wixstatic.com/media/e4c2dd_905227b73791422eb03759ad3648a202~mv2.jpg/v1/fill/w_500,h_320,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/3d663756-0b9e-4cfc-bf5a-d49df11742b9.jpg" alt="Precision manufacturing">
+          <div class="process-num">3</div>
+        </div>
+        <div class="body">
+          <h3>Precision manufacturing</h3>
+          <p>Cutting, bending, fabrication and finishing handled in-house.</p>
+        </div>
+      </div>
+      <div class="process-card">
+        <div class="img-wrap">
+          <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=500&h=320&auto=format&fit=crop" alt="On-time delivery">
+          <div class="process-num">4</div>
+        </div>
+        <div class="body">
+          <h3>On-time delivery</h3>
+          <p>Quality-checked parts shipped to your site, ready to use.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="industries" style="background:var(--blue-50);">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag-wrap">Industries we serve</span>
+      <h2>Trusted across sectors that demand precision</h2>
+    </div>
+    <div class="industry-grid">
+      <div class="industry-card">
+        <div class="industry-photo"><img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=200&h=200&auto=format&fit=crop" alt="Automotive"></div>
+        <div><h4>Automotive</h4><p>Components for vehicles and auto parts manufacturers.</p></div>
+      </div>
+      <div class="industry-card">
+        <div class="industry-photo"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=200&h=200&auto=format&fit=crop" alt="Energy"></div>
+        <div><h4>Energy</h4><p>Precision parts for power and renewable energy systems.</p></div>
+      </div>
+      <div class="industry-card">
+        <div class="industry-photo"><img src="https://images.unsplash.com/photo-1745921204896-c2011440a4e2?q=80&w=200&h=200&auto=format&fit=crop" alt="Industrial equipment"></div>
+        <div><h4>Industrial equipment</h4><p>Structural and functional parts for heavy machinery.</p></div>
+      </div>
+      <div class="industry-card">
+        <div class="industry-photo"><img src="https://images.unsplash.com/photo-1759323321196-2813db509285?q=80&w=200&h=200&auto=format&fit=crop" alt="Retail & home"></div>
+        <div><h4>Retail &amp; home</h4><p>Custom fixtures, displays and metal furnishings.</p></div>
+      </div>
+      <div class="industry-card">
+        <div class="industry-photo"><img src="https://images.unsplash.com/photo-1716191299980-a6e8827ba10b?q=80&w=200&h=200&auto=format&fit=crop" alt="General manufacturing"></div>
+        <div><h4>General manufacturing</h4><p>Flexible fabrication support for growing production lines.</p></div>
+      </div>
+      <div class="industry-card">
+        <div class="industry-photo"><img src="https://images.unsplash.com/photo-1581244249923-172ef5029576?q=80&w=200&h=200&auto=format&fit=crop" alt="Battery & electronics"></div>
+        <div><h4>Battery &amp; electronics</h4><p>Enclosures and precision brackets for energy storage.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="container">
+    <div class="section-head" style="margin:0 auto 44px;text-align:center;max-width:520px;">
+      <span class="section-tag-wrap">Quality you can verify</span>
+      <h2>Certified to industry standards</h2>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h4>ISO 9001:2015</h4>
+        <p>Quality management systems</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M9 14l-3 8 6-3 6 3-3-8"/></svg></div>
+        <h4>ISO 14001</h4>
+        <p>Environmental management</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h4>Safety compliant</h4>
+        <p>Workplace safety standards</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h4>Inspected parts</h4>
+        <p>100% quality checked before dispatch</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="clients" style="background:var(--blue-50);">
+  <div class="container">
+    <div class="section-head" style="margin:0 auto 44px;text-align:center;max-width:560px;">
+      <span class="section-tag-wrap">Our valued clients</span>
+      <h2>Trusted by industry leaders worldwide</h2>
+      <p>We partner with industry leaders to deliver high-precision engineering and manufacturing excellence across the globe.</p>
+    </div>
+    <div class="clients-grid">
+      <div class="client-card">
+        <div class="client-logo"><img src="https://static.wixstatic.com/media/e4c2dd_55bd0bb8dd1646d29678d34fd0c54a23~mv2.png/v1/fill/w_267,h_72,al_c,q_85,enc_auto/Screenshot%202026-08-04%20104632.png" alt="Pedvak Technologies"></div>
+        <h4>Pedvak Technologies</h4>
+        <a href="#" class="link">View project &#8594;</a>
+      </div>
+      <div class="client-card">
+        <div class="client-logo"><img src="https://static.wixstatic.com/media/e4c2dd_01977f0f8cc14209ba4683d5ceb63309~mv2.png/v1/fill/w_167,h_166,al_c,q_85,enc_auto/Screenshot%202026-08-05%20110358.png" alt="Gem Engineering"></div>
+        <h4>Gem Engineering</h4>
+        <a href="#" class="link">View project &#8594;</a>
+      </div>
+      <div class="client-card">
+        <div class="client-logo"><img src="https://static.wixstatic.com/media/e4c2dd_22dafd66eac441a79013916be341133c~mv2.png/v1/fill/w_85,h_122,al_c,q_85,enc_auto/Screenshot%202026-08-05%20110758.png" alt="United Technocrat"></div>
+        <h4>United Technocrat</h4>
+        <a href="#" class="link">View project &#8594;</a>
+      </div>
+      <div class="client-card">
+        <div class="client-logo"><img src="https://static.wixstatic.com/media/e4c2dd_ac401810c4cb4593836bd782007da1a5~mv2.png/v1/fill/w_112,h_65,al_c,q_85,enc_auto/Screenshot%202026-08-05%20114256.png" alt="Raam Home Retail"></div>
+        <h4>Raam Home Retail</h4>
+        <a href="#" class="link">View project &#8594;</a>
+      </div>
+      <div class="client-card">
+        <div class="client-logo"><img src="https://static.wixstatic.com/media/e4c2dd_67edf4d3faa94c21b150a4aff5ebc91f~mv2.png/v1/fill/w_201,h_92,al_c,q_85,enc_auto/Screenshot%202026-08-05%20111254.png" alt="Lion Energy Lithium Batteries"></div>
+        <h4>Lion Energy Lithium Batteries</h4>
+        <a href="#" class="link">View project &#8594;</a>
+      </div>
+      <div class="client-card">
+        <div class="client-logo"><img src="https://static.wixstatic.com/media/e4c2dd_e108022647ea4137bfdb77a18945ec78~mv2.png/v1/fill/w_150,h_151,al_c,q_85,enc_auto/Screenshot%202026-08-05%20111827.png" alt="Visaka Industries"></div>
+        <h4>Visaka Industries</h4>
+        <a href="#" class="link">View project &#8594;</a>
+      </div>
+      <div class="client-card">
+        <div class="client-logo"><img src="https://static.wixstatic.com/media/e4c2dd_184f1d648e4f47b399a32d95a2904910~mv2.png/v1/fill/w_213,h_45,al_c,q_85,enc_auto/Screenshot%202026-08-05%20115612.png" alt="Ductline Manufacturing"></div>
+        <h4>Ductline Manufacturing</h4>
+        <a href="#" class="link">View project &#8594;</a>
+      </div>
+      <div class="client-card">
+        <div class="client-logo"><img src="https://static.wixstatic.com/media/e4c2dd_e8531423d85041a3aa7030cfc07438bf~mv2.png/v1/fill/w_302,h_51,al_c,q_85,enc_auto/Screenshot%202026-08-05%20115744.png" alt="Ram Tech Automation"></div>
+        <h4>Ram Tech Automation</h4>
+        <a href="#" class="link">View project &#8594;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-band">
+  <div class="container stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+      <strong>500+</strong><span>Projects completed</span>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+      <strong>10+</strong><span>Years of experience</span>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <strong>25+</strong><span>Skilled professionals</span>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+      <strong>60+</strong><span>Trusted clients</span>
+    </div>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="container about-grid">
+    <div class="collage">
+      <img class="tall" src="https://static.wixstatic.com/media/e4c2dd_2ec53892ff074d339bdae0b3ad90b724~mv2.jpg/v1/fill/w_500,h_1020,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/ai-generated-IMAGE.jpg" alt="KPR facility">
+      <img class="short" src="https://static.wixstatic.com/media/e4c2dd_905227b73791422eb03759ad3648a202~mv2.jpg/v1/fill/w_500,h_475,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/3d663756-0b9e-4cfc-bf5a-d49df11742b9.jpg" alt="Fabrication work">
+      <img class="short" src="https://static.wixstatic.com/media/e4c2dd_2859a3f397ab4ec48864da7e3ae61663~mv2.jpg/v1/fill/w_500,h_475,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/CNC%20Laser%20Cutting.jpg" alt="Laser cutting">
+    </div>
+    <div>
+      <span class="about-tag">About us</span>
+      <h2>We want to give you the best services</h2>
+      <p>KPR Design &amp; Laser is a premier manufacturing firm dedicated to delivering precision-engineered solutions. Our commitment to excellence in CNC laser technology and fabrication sets new industry standards for quality and reliability.</p>
+      <div class="about-features">
+        <div>
+          <div class="about-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h4>Guaranteed results</h4>
+          <p>Engineering-grade tolerances verified through in-house quality checks on every part.</p>
+        </div>
+        <div>
+          <div class="about-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M9 14l-3 8 6-3 6 3-3-8"/></svg></div>
+          <h4>Quality services</h4>
+          <p>Full in-house capability across cutting, bending, fabrication and coating &mdash; one supplier.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="container">
+    <div class="section-head" style="margin:0 auto 44px;text-align:center;max-width:520px;">
+      <span class="section-tag-wrap">Testimonials</span>
+      <h2>What our clients say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-quote">KPR has been a dependable partner for our sheet metal needs &mdash; accurate parts, delivered on schedule every time.</p>
+        <div class="testimonial-person">
+          <div class="testimonial-avatar">PT</div>
+          <div><strong>Pedvak Technologies</strong><span>Manufacturing partner</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-quote">Their CNC bending precision has consistently matched our tightest tolerance requirements across every batch.</p>
+        <div class="testimonial-person">
+          <div class="testimonial-avatar">GE</div>
+          <div><strong>Gem Engineering</strong><span>Manufacturing partner</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-quote">Responsive team, clear communication and finished parts that need no rework. Exactly what we look for in a supplier.</p>
+        <div class="testimonial-person">
+          <div class="testimonial-avatar">RT</div>
+          <div><strong>Ram Tech Automation</strong><span>Manufacturing partner</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" style="background:var(--blue-50);">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag-wrap">Our work</span>
+      <h2>Shop floor and finished work</h2>
+    </div>
+    <div class="blog-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="blog-card"><img src="https://static.wixstatic.com/media/e4c2dd_2859a3f397ab4ec48864da7e3ae61663~mv2.jpg/v1/fill/w_500,h_320,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/CNC%20Laser%20Cutting.jpg" alt="Laser cutting"><div class="body"><h4>Laser cutting</h4></div></div>
+      <div class="blog-card"><img src="https://static.wixstatic.com/media/e4c2dd_0c5f7e8b66054a77816eff042c9a08e7~mv2.jpeg/v1/fill/w_500,h_320,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/WhatsApp%20Image%202026-08-26%20at%202_43_49%20PM.jpeg" alt="CNC bending"><div class="body"><h4>CNC bending</h4></div></div>
+      <div class="blog-card"><img src="https://static.wixstatic.com/media/e4c2dd_905227b73791422eb03759ad3648a202~mv2.jpg/v1/fill/w_500,h_320,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/3d663756-0b9e-4cfc-bf5a-d49df11742b9.jpg" alt="Fabrication"><div class="body"><h4>Fabrication</h4></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="container faq-grid">
+    <div>
+      <span class="section-tag-wrap">Frequently asked questions</span>
+      <h2 style="font-size:28px;color:#fff;margin-bottom:14px;">Have any questions for us?</h2>
+      <p style="color:#B8C9E8;font-size:15px;">Answers to what clients ask most before starting a project with KPR Design &amp; Laser.</p>
+      <img src="https://static.wixstatic.com/media/e4c2dd_905227b73791422eb03759ad3648a202~mv2.jpg/v1/fill/w_600,h_375,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/3d663756-0b9e-4cfc-bf5a-d49df11742b9.jpg" alt="KPR fabrication work">
+    </div>
+    <div>
+      <div class="faq-item open">
+        <div class="faq-q">What manufacturing services do you provide?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="faq-a"><p>CNC laser cutting, CNC bending, sheet metal fabrication and powder coating &amp; finishing, all under one roof.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Which industries do you serve?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="faq-a"><p>Automotive, energy, industrial equipment, retail and general manufacturing clients across India.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What quality standards do you follow?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="faq-a"><p>Every part goes through in-house quality inspection before it ships, held to engineering-grade tolerances.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How fast can you turn around a quote?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="faq-a"><p>We review your drawings and specs and typically respond with pricing within 24 hours.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How long does a typical project take?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="faq-a"><p>Depends on scope and volume &mdash; most orders move from quote to delivery within days, not weeks.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="cta-section">
+      <div>
+        <h2>Get a quote for your next project</h2>
+        <p>Share your requirements and our team will get back within 24 hours with pricing and lead time.</p>
+      </div>
+      <form class="cta-form" onsubmit="event.preventDefault();
+        var name=this.querySelector('[name=name]').value.trim();
+        var phone=this.querySelector('[name=phone]').value.trim();
+        var msg=this.querySelector('[name=message]').value.trim();
+        var text='Hi, I would like a quote.%0AName: '+encodeURIComponent(name)+'%0APhone: '+encodeURIComponent(phone)+(msg?('%0AProject details: '+encodeURIComponent(msg)):'');
+        window.open('https://wa.me/919963098624?text='+text,'_blank');
+        this.querySelector('button').textContent='Opening WhatsApp…';">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="tel" name="phone" placeholder="Phone number" required>
+        <textarea rows="3" name="message" placeholder="Tell us about your project"></textarea>
+        <button type="submit">Send request on WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <span>KPR Design &amp; Laser</span>
+        </div>
+        <p class="footer-desc" style="margin-top:16px;">High-precision CNC manufacturing and engineering solutions, delivering industry-leading quality for complex industrial requirements.</p>
+        <div class="social-row">
+          <a href="https://www.facebook.com/profile.php?id=61592211756851"><svg viewBox="0 0 24 24" fill="currentColor" style="color:#fff;"><path d="M22 12a10 10 0 1 0-11.5 9.87v-6.98H7.9V12h2.6V9.8c0-2.56 1.53-3.98 3.87-3.98 1.12 0 2.3.2 2.3.2v2.5h-1.3c-1.28 0-1.68.8-1.68 1.61V12h2.86l-.46 2.89h-2.4v6.98A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="https://www.instagram.com/kprlaserfabrication"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="https://www.linkedin.com/in/pranitha-rani-kondaveety-21a1b419/"><svg viewBox="0 0 24 24" fill="currentColor" style="color:#fff;"><path d="M6.94 6.5a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM5 8.5h4V21H5V8.5zm7 0h3.8v1.7h.05c.53-1 1.83-2 3.77-2 4.03 0 4.78 2.65 4.78 6.1V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21h-4V8.5z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#contact">Book online</a></li>
+          <li><a href="#contact">Contact us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">CNC laser cutting</a></li>
+          <li><a href="#services">Precision bending</a></li>
+          <li><a href="#services">Sheet metal fabrication</a></li>
+          <li><a href="#services">Powder coating</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <div class="footer-contact">
+          <span>Plot No. 33/B, IDA, Phase 3, Cherlapally, HCL, Hyderabad, Telangana, 500051</span>
+          <span>Pranitha.rmsi@gmail.com</span>
+          <span>+91 9963098624</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 KPR Design &amp; Laser. All rights reserved.</span>
+      <span>Built for precision manufacturing</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.querySelector('.faq-q').addEventListener('click',()=>{
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+
+</body>
+</html>
