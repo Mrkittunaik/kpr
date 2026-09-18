@@ -284,25 +284,14 @@
   }
   @media(max-width:560px){
     .container{padding:0 14px;}
-    .hero-inner{padding:24px 0 16px;gap:22px;}
-    .hero-copy h1{font-size:22px;line-height:1.2;}
-    .hero-copy p{font-size:12px;-webkit-line-clamp:4;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;}
-    .hero-actions{flex-direction:row;flex-wrap:wrap;}
-    .hero-actions .btn{width:auto;flex:none;justify-content:center;font-size:12px;padding:10px 14px;}
-    .hero-photo-wrap{max-width:260px;}
-    .hero-badge{max-width:160px;padding:9px 11px;left:-12px;right:auto;bottom:-16px;}
-    .hero-badge .tag{font-size:8.5px;}
-    .hero-badge h4{font-size:10.5px;}
-    .hero-badge p{font-size:9px;}
+    .hero-copy p{-webkit-line-clamp:unset;overflow:visible;}
     .section-head h2{font-size:21px;}
     .services-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
     .feature-grid,.process-grid{grid-template-columns:1fr;}
-    .cert-grid{display:flex;grid-template-columns:none;overflow-x:auto;overflow-y:hidden;gap:14px;padding:4px 14px 18px;margin:0 -14px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
-    .cert-grid::-webkit-scrollbar{display:none;}
-    .cert-grid .cert-card{flex:0 0 auto;width:66%;scroll-snap-align:start;}
-    .testimonials-grid{display:flex;grid-template-columns:none;overflow-x:auto;overflow-y:visible;gap:16px;padding:6px 14px 22px;margin:0 -14px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
-    .testimonials-grid::-webkit-scrollbar{display:none;}
-    .testimonials-grid .testimonial-card{position:relative;flex:0 0 auto;width:80%;scroll-snap-align:start;box-shadow:10px 10px 0 0 var(--blue-100);}
+    .cert-grid{grid-template-columns:repeat(2,1fr);gap:14px;overflow:visible;padding:0;margin:0;scroll-snap-type:none;}
+    .cert-grid .cert-card{width:auto;}
+    .testimonials-grid{display:grid;grid-template-columns:1fr;overflow:visible;padding:0;margin:0;scroll-snap-type:none;}
+    .testimonials-grid .testimonial-card{width:auto;box-shadow:none;}
     .stats-grid{grid-template-columns:repeat(4,1fr);gap:6px;}
     .stat-card{padding:10px 4px;}
     .stat-card strong{font-size:15px;}
@@ -314,26 +303,29 @@
     .collage .tall{aspect-ratio:16/11;grid-row:auto;}
     .collage .short{aspect-ratio:16/11;}
     .faq-q{font-size:13px;line-height:1.4;}
-    .footer-grid{grid-template-columns:1fr;gap:26px;}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:22px;}
   }
 
   /* ===== Mobile-only hero rebuild (320px-767px) — desktop/tablet untouched above ===== */
   @media(max-width:767px){
     .hero{padding:0;}
     .hero-inner{display:flex;flex-direction:column;padding:0;gap:0;}
-    .hero-copy{order:2;padding:16px 0 20px;}
+    .hero .container{padding:0;max-width:none;}
+    .hero-copy{order:2;padding:16px 20px 20px;}
     .hero-copy h1{font-size:clamp(32px,9vw,44px);line-height:1.08;margin-bottom:10px;letter-spacing:-.5px;}
     .hero-copy p{font-size:clamp(14.5px,3.8vw,16px);line-height:1.6;-webkit-line-clamp:unset;display:block;overflow:visible;margin:0 0 16px;max-width:none;}
-    .hero-actions{order:3;flex-direction:row;gap:8px;width:100%;flex-wrap:nowrap;margin-bottom:0;}
+    .hero-actions{order:3;flex-direction:row;gap:8px;width:100%;flex-wrap:nowrap;margin-bottom:0;padding:0 20px 20px;}
     .hero-actions .btn{width:auto;flex:1;justify-content:center;padding:9px 12px;font-size:12px;min-height:38px;border-radius:2px;}
 
     .hero-photo-wrap{order:1;max-width:none;width:100vw;margin:0 0 0 calc(50% - 50vw);}
     .hero-photo{border-radius:0;box-shadow:none;aspect-ratio:1/1;}
     .hero-photo img{object-position:top center;}
 
-    .hero-badge{position:absolute;left:0;right:auto;bottom:24px;top:auto;max-width:none;width:auto;margin:0;padding:10px 16px;border-radius:0 8px 8px 0;box-shadow:0 8px 20px rgba(0,0,0,.25);border-top:none;border-left:4px solid var(--blue-600);background:#fff;}
-    .hero-badge h4,.hero-badge p{display:none;}
-    .hero-badge .tag{font-size:12px;font-weight:700;letter-spacing:.04em;margin:0;color:var(--blue-900);}
+    .hero-badge{position:absolute;left:16px;right:auto;bottom:20px;top:auto;max-width:200px;width:auto;margin:0;padding:11px 15px;border-radius:6px;box-shadow:0 10px 26px rgba(0,0,0,.3);background:#fff;}
+    .hero-badge h4,.hero-badge p{display:block;}
+    .hero-badge .tag{font-size:9.5px;font-weight:700;letter-spacing:.04em;margin-bottom:4px;color:var(--blue-600);}
+    .hero-badge h4{font-size:11px;line-height:1.25;margin-bottom:3px;}
+    .hero-badge p{font-size:9.5px;color:var(--gray-600);}
 
     /* Services cards — 2-up, near-square, animated */
     .services-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
@@ -346,6 +338,90 @@
     .service-card p{font-size:10.8px;line-height:1.4;margin-bottom:8px;-webkit-line-clamp:2;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;}
     .service-card .link{font-size:11px;gap:4px;}
     .service-card .link svg{width:12px;height:12px;}
+
+    /* ===== Uniform card treatment for all remaining sections ===== */
+    section{padding:34px 0;}
+    .section-head{margin-bottom:22px;}
+    .section-tag-wrap{font-size:12px;padding:6px 18px 6px 13px;margin-bottom:10px;}
+    .section-head h2{white-space:normal;font-size:clamp(20px,6.5vw,26px);line-height:1.2;}
+    .section-head p{font-size:13.5px;}
+
+    /* Generic card look reused across grids */
+    .feature-card,.process-card,.industry-card,.cert-card,.client-card,
+    .testimonial-card,.blog-card{
+      border-radius:2px;box-shadow:0 6px 16px rgba(11,46,92,.08);
+      opacity:0;transform:translateY(18px);
+      transition:opacity .5s ease,transform .5s ease;
+    }
+    .feature-card.in-view,.process-card.in-view,.industry-card.in-view,
+    .cert-card.in-view,.client-card.in-view,.testimonial-card.in-view,
+    .blog-card.in-view{opacity:1;transform:translateY(0);}
+    .feature-card:active,.process-card:active,.industry-card:active,
+    .cert-card:active,.client-card:active,.testimonial-card:active,
+    .blog-card:active{transform:scale(.97);}
+
+    /* Why choose us */
+    .feature-grid{grid-template-columns:1fr;gap:12px;}
+    .feature-card{padding:18px;display:flex;gap:14px;align-items:flex-start;}
+    .feature-icon{margin-bottom:0;flex-shrink:0;width:40px;height:40px;}
+    .feature-card h3{font-size:14.5px;margin-bottom:4px;}
+    .feature-card p{font-size:12.5px;}
+
+    /* Process steps */
+    .process-grid{grid-template-columns:1fr;gap:14px;}
+    .process-card{display:flex;align-items:center;}
+    .process-card .img-wrap{width:96px;height:96px;flex-shrink:0;}
+    .process-card .body{padding:14px 16px;}
+    .process-num{width:26px;height:26px;font-size:12px;top:8px;left:8px;}
+    .process-card h3{font-size:14px;margin-bottom:4px;}
+    .process-card p{font-size:12px;}
+
+    /* Industries */
+    .industry-grid{grid-template-columns:1fr;gap:12px;}
+    .industry-card{padding:16px;}
+
+    /* Certifications */
+    .cert-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+    .cert-card{padding:18px 12px;}
+    .cert-icon{width:40px;height:40px;margin-bottom:10px;}
+    .cert-card h4{font-size:13px;}
+    .cert-card p{font-size:11px;}
+
+    /* Clients */
+    .clients-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+    .client-card{padding:18px 14px;}
+    .client-logo{height:56px;margin-bottom:10px;}
+    .client-card h4{font-size:12.5px;margin-bottom:10px;}
+
+    /* Stats band */
+    .stats-band{padding:36px 0;}
+
+    /* About */
+    .about-grid{grid-template-columns:1fr;gap:28px;}
+    .about-grid h2{font-size:clamp(20px,6.5vw,26px);}
+    .about-features{grid-template-columns:1fr;gap:14px;}
+
+    /* Testimonials */
+    .testimonials-grid{grid-template-columns:1fr;gap:14px;}
+    .testimonial-card{padding:20px;}
+
+    /* Gallery / blog cards */
+    #gallery .blog-grid{grid-template-columns:repeat(2,1fr) !important;gap:12px;}
+    .blog-card .body{padding:12px 14px;}
+    .blog-card h4{font-size:13px;}
+
+    /* FAQ */
+    .faq-grid{grid-template-columns:1fr;gap:24px;}
+    .faq-grid img{margin-top:16px;}
+
+    /* Contact CTA */
+    .cta-section{grid-template-columns:1fr;gap:24px;padding:28px 20px;}
+    .cta-section h2{white-space:normal;font-size:clamp(19px,6vw,24px);}
+    .cta-form{padding:18px;}
+
+    /* Footer */
+    .footer-grid{grid-template-columns:1fr 1fr;gap:24px;text-align:left;}
+    .footer-bottom{flex-direction:column;gap:8px;text-align:center;}
   }
 </style>
 <script>
@@ -358,6 +434,10 @@ document.addEventListener('DOMContentLoaded',function(){
   },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.service-card').forEach(function(el,i){
     el.style.transitionDelay=(i%2)*0.08+'s';
+    io.observe(el);
+  });
+  document.querySelectorAll('.feature-card,.process-card,.industry-card,.cert-card,.client-card,.testimonial-card,.blog-card').forEach(function(el,i){
+    el.style.transitionDelay=(i%3)*0.07+'s';
     io.observe(el);
   });
 });
