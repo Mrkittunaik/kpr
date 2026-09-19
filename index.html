@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KPR Design & Laser | Precision CNC Manufacturing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Orbitron:wght@800;900&display=swap" rel="stylesheet">
 <style>
   :root{
     --blue-900:#0B2E5C; --blue-800:#0E3A73; --blue-700:#12459C; --blue-600:#1B5FD6; --blue-500:#2E78F5;
@@ -33,6 +33,10 @@
   .nav{display:flex;align-items:center;justify-content:space-between;height:80px;}
   .logo-badge{display:flex;align-items:center;gap:10px;background:transparent;padding:0;margin-left:0;clip-path:none;}
   .logo-badge span{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:var(--blue-900);white-space:nowrap;}
+  .logo-badge .brand{display:flex;flex-direction:column;line-height:1;padding-left:12px;margin-left:2px;border-left:1.5px solid var(--border);}
+  .brand b{position:relative;display:inline-block;width:max-content;font-family:'Orbitron','Space Grotesk',sans-serif;font-weight:900;font-size:30px;letter-spacing:.08em;background:linear-gradient(100deg,var(--blue-900) 10%,var(--blue-500) 90%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--blue-900);}
+  .brand b::after{content:"";position:absolute;left:0;right:-6px;bottom:-5px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--blue-500),rgba(46,120,245,0));}
+  .brand small{margin-top:9px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--gray-600);white-space:nowrap;}
   .nav-links{display:flex;gap:30px;align-items:center;}
   .nav-links a{font-size:14.5px;font-weight:500;color:var(--gray-600);}
   .nav-links a.active,.nav-links a:hover{color:var(--blue-900);}
@@ -290,6 +294,10 @@
     .mobile-toggle{display:block;}
     .logo-badge{margin-left:0;clip-path:none;padding:10px 16px;border-radius:var(--radius);}
     .logo-badge img{height:34px;}
+    .logo-badge{gap:8px;padding:0;}
+    .logo-badge .brand{padding-left:10px;}
+    .brand b{font-size:22px;}
+    .brand small{font-size:8px;letter-spacing:.24em;margin-top:7px;}
     .nav{height:64px;}
     .hero-inner{grid-template-columns:1fr;padding:28px 0 20px;gap:28px;align-items:start;}
     .hero-copy{text-align:left;order:1;}
@@ -523,7 +531,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <header>
   <div class="container nav">
-    <div class="logo-badge"><img src="assets/logo.png" alt="KPR Design & Laser" style="height:42px;width:auto;display:block;"></div>
+    <a class="logo-badge" href="#home" aria-label="KPR Design & Laser"><img src="assets/logo.png" alt="" style="height:42px;width:auto;display:block;"><span class="brand"><b>KPR</b><small>Design &amp; Laser</small></span></a>
     <nav class="nav-links">
       <a href="#home" class="active">Home</a>
       <a href="#services">Services</a>
