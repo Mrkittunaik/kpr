@@ -110,24 +110,30 @@
   .stat-card strong{font-family:'Space Grotesk',sans-serif;font-size:32px;display:block;color:#fff;letter-spacing:-.5px;}
   .stat-card span{font-size:13.5px;color:#9FB3D9;margin-top:6px;display:block;}
 
-  /* About - dark with collage */
-  .about-section{background:var(--blue-900);color:#fff;position:relative;overflow:hidden;}
-  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;position:relative;}
-  .collage{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-  .collage img{border-radius:var(--radius);width:100%;}
-  .collage .tall{grid-row:span 2;aspect-ratio:1/2.05;}
-  .collage .short{aspect-ratio:1/0.95;}
+  /* About - dark section with alternating cards */
+  .about-section{background:#000;color:#fff;position:relative;overflow:hidden;}
+  .about-head{max-width:680px;margin-bottom:32px;}
   .about-tag{color:#7FADFF;font-weight:600;font-size:13.5px;margin-bottom:12px;display:block;}
-  .about-grid h2{font-size:30px;color:#fff;margin-bottom:16px;letter-spacing:-.4px;}
-  .about-grid p{color:#B8C9E8;font-size:15px;margin-bottom:26px;}
-  .about-features{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
-  .about-feature-icon{width:38px;height:38px;border-radius:var(--radius);background:rgba(255,255,255,.1);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
-  .about-feature-icon svg{width:19px;height:19px;}
-  .about-features h4{font-size:15.5px;color:#fff;margin-bottom:6px;}
-  .about-features p{font-size:13.5px;color:#9FB3D9;margin-bottom:0;}
+  .about-head h2{font-size:30px;color:#fff;margin-bottom:14px;letter-spacing:-.4px;}
+  .about-head p{color:#B8C9E8;font-size:15px;}
+  .about-cards{display:flex;flex-direction:column;gap:22px;}
+  .about-card{display:grid;grid-template-columns:1fr 1fr;background:#fff;color:var(--ink);border-radius:var(--radius);overflow:hidden;min-height:300px;box-shadow:0 14px 34px rgba(0,0,0,.22);transition:transform .2s ease,box-shadow .2s ease;}
+  .about-card:hover{transform:translateY(-3px);box-shadow:0 20px 44px rgba(0,0,0,.3);}
+  .about-card:nth-child(even) .about-card-img{order:-1;}
+  .about-card-body{padding:38px 40px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;}
+  .about-card-icon{width:42px;height:42px;border-radius:var(--radius);background:var(--blue-100);color:var(--blue-600);display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .about-card-icon svg{width:21px;height:21px;}
+  .about-card-body h3{font-size:22px;color:var(--blue-900);margin-bottom:10px;letter-spacing:-.3px;}
+  .about-card-body p{font-size:14.5px;color:var(--gray-600);margin-bottom:22px;}
+  .about-card-btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:14px;color:var(--blue-700);margin-top:auto;}
+  .about-card-btn .arrow{width:38px;height:38px;border-radius:50%;background:var(--blue-600);color:#fff;display:flex;align-items:center;justify-content:center;transition:transform .2s ease,background .2s ease;}
+  .about-card-btn .arrow svg{width:17px;height:17px;}
+  .about-card-btn:hover .arrow{background:var(--blue-700);transform:translateX(4px);}
+  .about-card-img{position:relative;min-height:240px;}
+  .about-card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 
   /* Testimonials */
-  .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .testimonials-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:980px;margin:0 auto;}
   .clients-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
   .client-card{border:1px solid var(--border);border-radius:var(--radius);padding:24px 20px;text-align:center;background:#fff;transition:.2s ease;}
   .client-card:hover{border-color:var(--blue-500);box-shadow:0 10px 28px rgba(11,46,92,.1);transform:translateY(-3px);}
@@ -174,19 +180,29 @@
   .cert-icon svg{width:24px;height:24px;}
   .cert-card h4{font-size:14.5px;color:var(--blue-900);margin-bottom:4px;}
   .cert-card p{font-size:12px;color:var(--gray-600);margin:0;}
-  .testimonial-card{border:1px solid var(--border);border-top:3px solid var(--blue-600);border-radius:var(--radius);padding:26px;background:#fff;display:flex;flex-direction:column;gap:16px;}
-  .testimonial-stars{color:var(--blue-600);font-size:14px;letter-spacing:2px;}
-  .testimonial-quote{font-size:14.5px;color:var(--ink);line-height:1.65;flex:1;}
-  .testimonial-person{display:flex;align-items:center;gap:12px;border-top:1px solid var(--border);padding-top:14px;}
-  .testimonial-avatar{width:38px;height:38px;border-radius:var(--radius);background:var(--blue-900);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;font-family:'Space Grotesk',sans-serif;}
-  .testimonial-person strong{display:block;font-size:13.5px;color:var(--ink);}
+  .testimonial-card{position:relative;border:1px solid var(--border);border-radius:12px;padding:32px 30px 26px;background:#fff;display:flex;flex-direction:column;gap:16px;box-shadow:0 10px 30px rgba(11,46,92,.07);overflow:hidden;}
+  .testimonial-card::before{content:"\201C";position:absolute;top:-6px;right:22px;font-family:Georgia,serif;font-size:110px;line-height:1;color:var(--blue-100);pointer-events:none;}
+  .testimonial-card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(var(--blue-500),var(--blue-900));}
+  .testimonial-stars{color:#F5A524;font-size:15px;letter-spacing:3px;position:relative;}
+  .testimonial-quote{font-size:15.5px;color:var(--ink);line-height:1.7;flex:1;position:relative;}
+  .testimonial-person{display:flex;align-items:center;gap:12px;border-top:1px solid var(--border);padding-top:18px;margin-top:4px;}
+  .testimonial-avatar{position:relative;width:34px;height:34px;flex:none;border-radius:50%;background:var(--blue-900);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;font-family:'Space Grotesk',sans-serif;box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--blue-500);overflow:hidden;}
+  .testimonial-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .testimonial-person strong{display:block;font-size:14.5px;color:var(--ink);}
   .testimonial-person span{font-size:12.5px;color:var(--gray-600);}
+  .testimonial-extra{display:none;}
+  .testimonials-grid.show-all .testimonial-extra{display:flex;}
+  .more-wrap{display:flex;justify-content:center;margin-top:30px;}
+  .show-more-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 26px;border-radius:999px;border:1.5px solid var(--blue-600);background:#fff;color:var(--blue-700);font:600 14.5px 'Inter',sans-serif;cursor:pointer;transition:.18s ease;}
+  .show-more-btn svg{width:16px;height:16px;transition:transform .25s ease;}
+  .show-more-btn:hover{background:var(--blue-600);color:#fff;}
+  .show-more-btn.open svg{transform:rotate(180deg);}
 
   /* FAQ - dark */
-  .faq-section{background:var(--blue-900);color:#fff;}
+  .faq-section{background:#000;color:#fff;}
   .faq-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start;}
   .faq-grid img{border-radius:var(--radius);width:100%;margin-top:24px;aspect-ratio:16/10;}
-  .faq-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;}
+  .faq-item{background:#0B0B0E;border:1px solid #23232A;border-radius:var(--radius);margin-bottom:10px;overflow:hidden;}
   .faq-q{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;cursor:pointer;font-size:14.5px;font-weight:600;color:#fff;gap:12px;}
   .faq-q svg{width:18px;height:18px;flex-shrink:0;transition:.2s;}
   .faq-item.open .faq-q svg{transform:rotate(180deg);}
@@ -213,20 +229,60 @@
   .cta-form button{background:var(--blue-600);color:#fff;border:none;border-radius:var(--radius);padding:13px;font-weight:700;font-size:15px;cursor:pointer;transition:.15s ease;}
   .cta-form button:hover{background:var(--blue-700);transform:translateY(-1px);box-shadow:0 6px 16px rgba(27,95,214,.3);}
 
+  /* Gallery */
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;grid-auto-flow:dense;gap:14px;}
+  .g-item{position:relative;overflow:hidden;border-radius:var(--radius);cursor:pointer;background:var(--blue-100);}
+  .g-item.big{grid-column:span 2;grid-row:span 2;}
+  .g-item.wide{grid-column:span 2;}
+  .g-item.tall{grid-row:span 2;}
+  .g-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .g-item:hover img{transform:scale(1.07);}
+  .g-item::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(5,15,32,.82) 0%,rgba(5,15,32,0) 55%);opacity:.9;transition:opacity .3s;}
+  .g-cap{position:absolute;left:16px;right:60px;bottom:14px;z-index:2;color:#fff;}
+  .g-cap small{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#9CC0FF;font-weight:600;margin-bottom:2px;}
+  .g-cap strong{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;}
+  .g-open{position:absolute;right:14px;bottom:14px;z-index:2;width:36px;height:36px;border-radius:50%;background:var(--blue-600);color:#fff;display:flex;align-items:center;justify-content:center;transition:transform .25s ease,background .2s;}
+  .g-open svg{width:16px;height:16px;}
+  .g-item:hover .g-open{transform:scale(1.12) rotate(-45deg);background:var(--blue-500);}
+  .g-more{display:none;}
+  .gallery-grid.show-all .g-more{display:block;}
+  #lightbox{position:fixed;inset:0;z-index:200;background:rgba(3,8,18,.94);display:none;align-items:center;justify-content:center;flex-direction:column;padding:24px;}
+  #lightbox.open{display:flex;}
+  #lightbox img{max-width:min(1100px,92vw);max-height:76vh;border-radius:6px;object-fit:contain;}
+  #lightbox .lb-cap{color:#D7E2F5;margin-top:14px;font-size:14px;text-align:center;}
+  #lightbox button{position:absolute;background:rgba(255,255,255,.1);border:0;color:#fff;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;}
+  #lightbox button:hover{background:var(--blue-600);}
+  .lb-close{top:18px;right:18px;}
+  .lb-prev{left:18px;top:50%;}
+  .lb-next{right:18px;top:50%;}
+
   /* Footer */
-  footer{background:#08182F;color:#B8C0D1;padding:52px 0 24px;}
-  .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:36px;margin-bottom:36px;}
-  .footer-grid h4{color:#fff;font-size:15px;margin-bottom:16px;}
-  .footer-grid ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
-  .footer-grid a{font-size:14px;color:#9FB3D9;}
-  .footer-grid a:hover{color:#fff;}
+  footer{--fa:#3B8BFF;background:#000;color:#A1A1AA;padding:56px 0 24px;border-top:1px solid #1C1C20;}
+  .footer-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:30px 34px;margin-bottom:48px;border:1px solid #23232A;border-radius:12px;background:radial-gradient(600px 200px at 0% 0%,rgba(59,139,255,.22),transparent 70%),#0B0B0E;}
+  .footer-cta h3{font-size:24px;color:#fff;letter-spacing:-.3px;margin-bottom:6px;}
+  .footer-cta h3 span{color:var(--fa);}
+  .footer-cta p{font-size:14px;color:#8B8B95;}
+  .footer-cta-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .f-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;background:var(--fa);color:#fff;font-weight:600;font-size:14px;border:1.5px solid var(--fa);transition:.18s ease;}
+  .f-btn:hover{background:#fff;color:#000;border-color:#fff;}
+  .f-btn.ghost{background:transparent;color:#fff;border-color:#3A3A44;}
+  .f-btn.ghost:hover{border-color:var(--fa);color:var(--fa);background:transparent;}
+  .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:40px;margin-bottom:40px;}
+  .footer-grid h4{position:relative;color:#fff;font-size:15px;margin-bottom:22px;padding-bottom:12px;}
+  .footer-grid h4::after{content:"";position:absolute;left:0;bottom:0;width:28px;height:3px;border-radius:2px;background:var(--fa);}
+  .footer-grid ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
+  .footer-grid a{font-size:14px;color:#A1A1AA;transition:color .15s,padding-left .15s;}
+  .footer-grid ul a:hover{color:var(--fa);padding-left:4px;}
   .footer-logo{display:inline-flex;align-items:center;gap:10px;}
-  .footer-logo span{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#fff;white-space:nowrap;}
-  .footer-desc{font-size:14px;color:#8A93A6;margin-bottom:16px;max-width:280px;}
-  .footer-contact{font-size:14px;display:flex;flex-direction:column;gap:8px;}
-  .footer-bottom{border-top:1px solid #1A2B47;padding-top:22px;display:flex;justify-content:space-between;font-size:13px;color:#7A8296;}
-  .social-row{display:flex;gap:10px;margin-top:16px;}
-  .social-row a{width:34px;height:34px;border-radius:var(--radius);background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;}
+  .footer-desc{font-size:14px;color:#8B8B95;margin-bottom:16px;max-width:300px;line-height:1.65;}
+  .footer-contact{font-size:14px;display:flex;flex-direction:column;gap:14px;}
+  .footer-contact div,.footer-contact a{display:flex;gap:12px;align-items:flex-start;color:#A1A1AA;}
+  .footer-contact a:hover{color:#fff;}
+  .footer-contact svg{width:18px;height:18px;flex:none;margin-top:2px;color:var(--fa);}
+  .footer-bottom{border-top:1px solid #1C1C20;padding-top:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:#6E6E78;}
+  .social-row{display:flex;gap:10px;margin-top:18px;}
+  .social-row a{width:38px;height:38px;border-radius:50%;background:#0B0B0E;border:1px solid #2A2A32;display:flex;align-items:center;justify-content:center;transition:.18s ease;}
+  .social-row a:hover{background:var(--fa);border-color:var(--fa);transform:translateY(-2px);}
   .social-row svg{width:16px;height:16px;}
 
   @media(max-width:900px){
@@ -260,10 +316,7 @@
     .stat-card{padding:14px 6px;}
     .stat-card strong{font-size:19px;}
     .stat-card span{font-size:10.5px;}
-    .about-grid,.faq-grid{grid-template-columns:1fr;gap:32px;}
-    .collage{gap:10px;}
-    .about-grid h2{font-size:24px;}
-    .about-features{grid-template-columns:1fr 1fr;gap:16px;}
+    .faq-grid{grid-template-columns:1fr;gap:32px;}
     .testimonials-grid,.blog-grid{grid-template-columns:1fr;}
     .clients-grid{grid-template-columns:repeat(2,1fr);gap:14px;}
     .feature-grid,.process-grid{grid-template-columns:repeat(2,1fr);gap:14px;}
@@ -279,7 +332,10 @@
     .cta-section{grid-template-columns:1fr;padding:26px 20px;border-radius:var(--radius);}
     .cta-section h2{font-size:clamp(15px,4.6vw,22px);}
     footer{padding:40px 0 20px;}
-    .footer-grid{grid-template-columns:1fr 1fr;gap:28px;margin-bottom:28px;}
+    .footer-cta{padding:24px 22px;margin-bottom:36px;}
+    .footer-cta h3{font-size:20px;}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:32px 24px;margin-bottom:28px;}
+    .footer-grid>div:first-child,.footer-grid>div:last-child{grid-column:1/-1;}
     .footer-bottom{flex-direction:column;gap:8px;align-items:flex-start;}
   }
   @media(max-width:560px){
@@ -298,10 +354,6 @@
     .stat-card span{font-size:9px;line-height:1.25;}
     .stat-icon{width:34px;height:34px;margin-bottom:12px;}
     .stat-icon svg{width:17px;height:17px;}
-    .about-features{grid-template-columns:1fr;}
-    .collage{grid-template-columns:1fr;}
-    .collage .tall{aspect-ratio:16/11;grid-row:auto;}
-    .collage .short{aspect-ratio:16/11;}
     .faq-q{font-size:13px;line-height:1.4;}
     .footer-grid{grid-template-columns:1fr 1fr;gap:22px;}
   }
@@ -399,9 +451,14 @@
     .stats-band{padding:36px 0;}
 
     /* About */
-    .about-grid{grid-template-columns:1fr;gap:28px;}
-    .about-grid h2{font-size:clamp(20px,6.5vw,26px);}
-    .about-features{grid-template-columns:1fr;gap:14px;}
+    .about-head h2{font-size:clamp(21px,6.5vw,26px);}
+    .about-head p{font-size:14px;}
+    .about-cards{gap:16px;}
+    .about-card{grid-template-columns:1fr;min-height:0;}
+    .about-card .about-card-img,.about-card:nth-child(even) .about-card-img{order:-1;min-height:0;aspect-ratio:16/10;}
+    .about-card-body{padding:20px 18px 22px;}
+    .about-card-body h3{font-size:18px;}
+    .about-card-body p{font-size:13.5px;margin-bottom:16px;}
 
     /* Testimonials */
     .testimonials-grid{grid-template-columns:1fr;gap:14px;}
@@ -424,6 +481,23 @@
     /* Footer */
     .footer-grid{grid-template-columns:1fr 1fr;gap:24px;text-align:left;}
     .footer-bottom{flex-direction:column;gap:8px;text-align:center;}
+  }
+
+  /* Reviews / gallery / footer - mobile */
+  @media(max-width:767px){
+    .testimonials-grid{grid-template-columns:1fr;gap:16px;}
+    .testimonial-card{padding:26px 20px 20px;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px;gap:10px;}
+    .g-item.big{grid-column:span 2;grid-row:span 2;}
+    .g-item.wide{grid-column:span 2;}
+    .g-cap{left:12px;right:50px;bottom:10px;}
+    .g-cap strong{font-size:13.5px;}
+    .g-cap small{font-size:9.5px;}
+    .g-open{width:30px;height:30px;right:10px;bottom:10px;}
+    .lb-prev,.lb-next{top:auto;bottom:22px;}
+    .lb-prev{left:calc(50% - 54px);}
+    .lb-next{right:calc(50% - 54px);}
+    .footer-bottom{align-items:center;text-align:center;justify-content:center;}
   }
 </style>
 <script>
@@ -780,27 +854,39 @@ document.addEventListener('DOMContentLoaded',function(){
 </section>
 
 <section class="about-section" id="about">
-  <div class="container about-grid">
-    <div class="collage">
-      <img class="tall" src="https://static.wixstatic.com/media/e4c2dd_2ec53892ff074d339bdae0b3ad90b724~mv2.jpg/v1/fill/w_500,h_1020,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/ai-generated-IMAGE.jpg" alt="KPR facility">
-      <img class="short" src="https://static.wixstatic.com/media/e4c2dd_905227b73791422eb03759ad3648a202~mv2.jpg/v1/fill/w_500,h_475,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/3d663756-0b9e-4cfc-bf5a-d49df11742b9.jpg" alt="Fabrication work">
-      <img class="short" src="https://static.wixstatic.com/media/e4c2dd_2859a3f397ab4ec48864da7e3ae61663~mv2.jpg/v1/fill/w_500,h_475,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/CNC%20Laser%20Cutting.jpg" alt="Laser cutting">
-    </div>
-    <div>
+  <div class="container">
+    <div class="about-head">
       <span class="about-tag">About us</span>
       <h2>We Want to Give You the Best <span class="accent">Services</span></h2>
-      <p>KPR Design &amp; Laser is a premier manufacturing firm dedicated to delivering precision-engineered solutions. Our commitment to excellence in CNC laser technology and fabrication sets new industry standards for quality and reliability.</p>
-      <div class="about-features">
-        <div>
-          <div class="about-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
-          <h4>Guaranteed Results</h4>
-          <p>Engineering-grade tolerances verified through in-house quality checks on every part.</p>
+      <p>Precision manufacturing, built around quality and on-time delivery.</p>
+    </div>
+    <div class="about-cards">
+      <div class="about-card">
+        <div class="about-card-body">
+          <div class="about-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div>
+          <h3>Who We Are</h3>
+          <p>KPR Design &amp; Laser is a premier manufacturing firm delivering precision-engineered solutions. Our commitment to CNC laser technology and fabrication sets a high bar for quality and reliability.</p>
+          <a class="about-card-btn" href="#services" aria-label="View services">View services <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         </div>
-        <div>
-          <div class="about-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M9 14l-3 8 6-3 6 3-3-8"/></svg></div>
-          <h4>Quality Services</h4>
-          <p>Full in-house capability across cutting, bending, fabrication and coating &mdash; one supplier.</p>
+        <div class="about-card-img"><img src="https://static.wixstatic.com/media/e4c2dd_2ec53892ff074d339bdae0b3ad90b724~mv2.jpg/v1/fill/w_800,h_640,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/ai-generated-IMAGE.jpg" alt="KPR facility" loading="lazy"></div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-body">
+          <div class="about-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Guaranteed Results</h3>
+          <p>Engineering-grade tolerances verified through in-house quality checks on every single part we ship.</p>
+          <a class="about-card-btn" href="#process" aria-label="See our process">See our process <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         </div>
+        <div class="about-card-img"><img src="https://static.wixstatic.com/media/e4c2dd_905227b73791422eb03759ad3648a202~mv2.jpg/v1/fill/w_800,h_640,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/3d663756-0b9e-4cfc-bf5a-d49df11742b9.jpg" alt="Fabrication work" loading="lazy"></div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-body">
+          <div class="about-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M9 14l-3 8 6-3 6 3-3-8"/></svg></div>
+          <h3>Quality Services</h3>
+          <p>Full in-house capability across cutting, bending, fabrication and coating &mdash; one supplier for the whole job.</p>
+          <a class="about-card-btn" href="#contact" aria-label="Get a quote">Get a quote <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        </div>
+        <div class="about-card-img"><img src="https://static.wixstatic.com/media/e4c2dd_2859a3f397ab4ec48864da7e3ae61663~mv2.jpg/v1/fill/w_800,h_640,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/CNC%20Laser%20Cutting.jpg" alt="Laser cutting" loading="lazy"></div>
       </div>
     </div>
   </div>
@@ -808,16 +894,16 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <section id="testimonials">
   <div class="container">
-    <div class="section-head" style="margin:0 auto 44px;text-align:center;max-width:520px;">
+    <div class="section-head" style="margin:0 auto 40px;text-align:center;max-width:520px;">
       <span class="section-tag-wrap">Testimonials</span>
       <h2>What Our <span class="accent">Clients</span> Say</h2>
     </div>
-    <div class="testimonials-grid">
+    <div class="testimonials-grid" id="reviewsGrid">
       <div class="testimonial-card">
         <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <p class="testimonial-quote">KPR has been a dependable partner for our sheet metal needs &mdash; accurate parts, delivered on schedule every time.</p>
         <div class="testimonial-person">
-          <div class="testimonial-avatar">PT</div>
+          <div class="testimonial-avatar">PT<img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
           <div><strong>Pedvak Technologies</strong><span>Manufacturing partner</span></div>
         </div>
       </div>
@@ -825,19 +911,20 @@ document.addEventListener('DOMContentLoaded',function(){
         <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <p class="testimonial-quote">Their CNC bending precision has consistently matched our tightest tolerance requirements across every batch.</p>
         <div class="testimonial-person">
-          <div class="testimonial-avatar">GE</div>
+          <div class="testimonial-avatar">GE<img src="https://randomuser.me/api/portraits/women/44.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
           <div><strong>Gem Engineering</strong><span>Manufacturing partner</span></div>
         </div>
       </div>
-      <div class="testimonial-card">
+      <div class="testimonial-card testimonial-extra">
         <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <p class="testimonial-quote">Responsive team, clear communication and finished parts that need no rework. Exactly what we look for in a supplier.</p>
         <div class="testimonial-person">
-          <div class="testimonial-avatar">RT</div>
+          <div class="testimonial-avatar">RT<img src="https://randomuser.me/api/portraits/men/75.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
           <div><strong>Ram Tech Automation</strong><span>Manufacturing partner</span></div>
         </div>
       </div>
     </div>
+    <div class="more-wrap"><button type="button" class="show-more-btn" id="reviewsToggle" aria-expanded="false"><span>Show more reviews</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></div>
   </div>
 </section>
 
@@ -847,13 +934,31 @@ document.addEventListener('DOMContentLoaded',function(){
       <span class="section-tag-wrap">Our work</span>
       <h2>Shop Floor and <span class="accent">Finished</span> Work</h2>
     </div>
-    <div class="blog-grid" style="grid-template-columns:repeat(3,1fr);">
-      <div class="blog-card"><img src="https://static.wixstatic.com/media/e4c2dd_2859a3f397ab4ec48864da7e3ae61663~mv2.jpg/v1/fill/w_500,h_320,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/CNC%20Laser%20Cutting.jpg" alt="Laser cutting"><div class="body"><h4>Laser Cutting</h4></div></div>
-      <div class="blog-card"><img src="https://static.wixstatic.com/media/e4c2dd_0c5f7e8b66054a77816eff042c9a08e7~mv2.jpeg/v1/fill/w_500,h_320,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/WhatsApp%20Image%202026-08-26%20at%202_43_49%20PM.jpeg" alt="CNC bending"><div class="body"><h4>CNC Bending</h4></div></div>
-      <div class="blog-card"><img src="https://static.wixstatic.com/media/e4c2dd_905227b73791422eb03759ad3648a202~mv2.jpg/v1/fill/w_500,h_320,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/3d663756-0b9e-4cfc-bf5a-d49df11742b9.jpg" alt="Fabrication"><div class="body"><h4>Fabrication</h4></div></div>
+    <div class="gallery-grid" id="galleryGrid">
+      <figure class="g-item big" data-full="https://static.wixstatic.com/media/e4c2dd_2859a3f397ab4ec48864da7e3ae61663~mv2.jpg/v1/fill/w_1600,h_1200,al_c,q_85,enc_auto/CNC%20Laser%20Cutting.jpg" data-title="Laser cutting"><img src="https://static.wixstatic.com/media/e4c2dd_2859a3f397ab4ec48864da7e3ae61663~mv2.jpg/v1/fill/w_900,h_700,al_c,q_85,enc_auto/CNC%20Laser%20Cutting.jpg" alt="Laser cutting" loading="lazy"><figcaption class="g-cap"><small>Precision</small><strong>Laser cutting</strong></figcaption><span class="g-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figure>
+      <figure class="g-item" data-full="https://static.wixstatic.com/media/e4c2dd_0c5f7e8b66054a77816eff042c9a08e7~mv2.jpeg/v1/fill/w_1600,h_1200,al_c,q_85,enc_auto/WhatsApp%20Image%202026-08-26%20at%202_43_49%20PM.jpeg" data-title="CNC bending"><img src="https://static.wixstatic.com/media/e4c2dd_0c5f7e8b66054a77816eff042c9a08e7~mv2.jpeg/v1/fill/w_900,h_700,al_c,q_85,enc_auto/WhatsApp%20Image%202026-08-26%20at%202_43_49%20PM.jpeg" alt="CNC bending" loading="lazy"><figcaption class="g-cap"><small>Fabrication</small><strong>CNC bending</strong></figcaption><span class="g-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figure>
+      <figure class="g-item" data-full="https://static.wixstatic.com/media/e4c2dd_905227b73791422eb03759ad3648a202~mv2.jpg/v1/fill/w_1600,h_1200,al_c,q_85,enc_auto/3d663756-0b9e-4cfc-bf5a-d49df11742b9.jpg" data-title="Sheet metal fabrication"><img src="https://static.wixstatic.com/media/e4c2dd_905227b73791422eb03759ad3648a202~mv2.jpg/v1/fill/w_900,h_700,al_c,q_85,enc_auto/3d663756-0b9e-4cfc-bf5a-d49df11742b9.jpg" alt="Sheet metal fabrication" loading="lazy"><figcaption class="g-cap"><small>Fabrication</small><strong>Sheet metal fabrication</strong></figcaption><span class="g-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figure>
+      <figure class="g-item wide" data-full="https://static.wixstatic.com/media/e4c2dd_f26ff51d54fe4f81a82dd128bb0c69d9~mv2.jpg/v1/fill/w_1600,h_1200,al_c,q_85,enc_auto/3015d00c-765e-4c49-8412-2c95a55af63f.jpg" data-title="Powder coating"><img src="https://static.wixstatic.com/media/e4c2dd_f26ff51d54fe4f81a82dd128bb0c69d9~mv2.jpg/v1/fill/w_900,h_700,al_c,q_85,enc_auto/3015d00c-765e-4c49-8412-2c95a55af63f.jpg" alt="Powder coating" loading="lazy"><figcaption class="g-cap"><small>Finishing</small><strong>Powder coating</strong></figcaption><span class="g-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figure>
+      <figure class="g-item g-more" data-full="https://static.wixstatic.com/media/e4c2dd_2ec53892ff074d339bdae0b3ad90b724~mv2.jpg/v1/fill/w_1600,h_1200,al_c,q_85,enc_auto/ai-generated-IMAGE.jpg" data-title="Our facility"><img src="https://static.wixstatic.com/media/e4c2dd_2ec53892ff074d339bdae0b3ad90b724~mv2.jpg/v1/fill/w_900,h_700,al_c,q_85,enc_auto/ai-generated-IMAGE.jpg" alt="Our facility" loading="lazy"><figcaption class="g-cap"><small>Shop floor</small><strong>Our facility</strong></figcaption><span class="g-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figure>
+      <figure class="g-item g-more" data-full="https://images.unsplash.com/photo-1745921204896-c2011440a4e2?q=80&w=1600&auto=format&fit=crop" data-title="Industrial equipment"><img src="https://images.unsplash.com/photo-1745921204896-c2011440a4e2?q=80&w=900&auto=format&fit=crop" alt="Industrial equipment" loading="lazy"><figcaption class="g-cap"><small>Industries</small><strong>Industrial equipment</strong></figcaption><span class="g-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figure>
+      <figure class="g-item wide g-more" data-full="https://images.unsplash.com/photo-1716191299980-a6e8827ba10b?q=80&w=1600&auto=format&fit=crop" data-title="General manufacturing"><img src="https://images.unsplash.com/photo-1716191299980-a6e8827ba10b?q=80&w=900&auto=format&fit=crop" alt="General manufacturing" loading="lazy"><figcaption class="g-cap"><small>Industries</small><strong>General manufacturing</strong></figcaption><span class="g-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figure>
+      <figure class="g-item tall g-more" data-full="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=1600&auto=format&fit=crop" data-title="Automotive parts"><img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=900&auto=format&fit=crop" alt="Automotive parts" loading="lazy"><figcaption class="g-cap"><small>Industries</small><strong>Automotive parts</strong></figcaption><span class="g-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figure>
+      <figure class="g-item wide g-more" data-full="https://images.unsplash.com/photo-1581244249923-172ef5029576?q=80&w=1600&auto=format&fit=crop" data-title="Battery &amp; electronics"><img src="https://images.unsplash.com/photo-1581244249923-172ef5029576?q=80&w=900&auto=format&fit=crop" alt="Battery &amp; electronics" loading="lazy"><figcaption class="g-cap"><small>Industries</small><strong>Battery &amp; electronics</strong></figcaption><span class="g-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figure>
+      <figure class="g-item g-more" data-full="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1600&auto=format&fit=crop" data-title="Energy sector"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=900&auto=format&fit=crop" alt="Energy sector" loading="lazy"><figcaption class="g-cap"><small>Industries</small><strong>Energy sector</strong></figcaption><span class="g-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figure>
+      <figure class="g-item wide g-more" data-full="https://images.unsplash.com/photo-1600869009498-8d429f88d4f5?q=80&w=1600&auto=format&fit=crop" data-title="Drawings &amp; design"><img src="https://images.unsplash.com/photo-1600869009498-8d429f88d4f5?q=80&w=900&auto=format&fit=crop" alt="Drawings &amp; design" loading="lazy"><figcaption class="g-cap"><small>Process</small><strong>Drawings &amp; design</strong></figcaption><span class="g-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figure>
+      <figure class="g-item g-more" data-full="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=1600&auto=format&fit=crop" data-title="Packing &amp; dispatch"><img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=900&auto=format&fit=crop" alt="Packing &amp; dispatch" loading="lazy"><figcaption class="g-cap"><small>Process</small><strong>Packing &amp; dispatch</strong></figcaption><span class="g-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></figure>
     </div>
+    <div class="more-wrap"><button type="button" class="show-more-btn" id="galleryToggle" aria-expanded="false"><span>Show more work</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></div>
   </div>
 </section>
+
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button type="button" class="lb-close" aria-label="Close">&times;</button>
+  <button type="button" class="lb-prev" aria-label="Previous">&#8249;</button>
+  <img alt="">
+  <div class="lb-cap"></div>
+  <button type="button" class="lb-next" aria-label="Next">&#8250;</button>
+</div>
 
 <section class="faq-section" id="faq">
   <div class="container faq-grid">
@@ -913,16 +1018,26 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <footer>
   <div class="container">
+    <div class="footer-cta">
+      <div>
+        <h3>Got a drawing? <span>Let&rsquo;s cut it.</span></h3>
+        <p>Share your file and get a quote from our team, fast.</p>
+      </div>
+      <div class="footer-cta-actions">
+        <a class="f-btn" href="#contact">Get a quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="f-btn ghost" href="https://wa.me/919963098624" target="_blank" rel="noopener">WhatsApp us</a>
+      </div>
+    </div>
     <div class="footer-grid">
       <div>
         <div class="footer-logo">
-          <img src="assets/logo.png" alt="KPR Design & Laser" style="height:48px;width:auto;display:block;">
+          <img src="assets/logo.png" alt="KPR Design &amp; Laser" style="height:84px;width:auto;display:block;">
         </div>
         <p class="footer-desc" style="margin-top:16px;">High-precision CNC manufacturing and engineering solutions, delivering industry-leading quality for complex industrial requirements.</p>
         <div class="social-row">
-          <a href="https://www.facebook.com/profile.php?id=61592211756851"><svg viewBox="0 0 24 24" fill="currentColor" style="color:#fff;"><path d="M22 12a10 10 0 1 0-11.5 9.87v-6.98H7.9V12h2.6V9.8c0-2.56 1.53-3.98 3.87-3.98 1.12 0 2.3.2 2.3.2v2.5h-1.3c-1.28 0-1.68.8-1.68 1.61V12h2.86l-.46 2.89h-2.4v6.98A10 10 0 0 0 22 12z"/></svg></a>
-          <a href="https://www.instagram.com/kprlaserfabrication"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-          <a href="https://www.linkedin.com/in/pranitha-rani-kondaveety-21a1b419/"><svg viewBox="0 0 24 24" fill="currentColor" style="color:#fff;"><path d="M6.94 6.5a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM5 8.5h4V21H5V8.5zm7 0h3.8v1.7h.05c.53-1 1.83-2 3.77-2 4.03 0 4.78 2.65 4.78 6.1V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21h-4V8.5z"/></svg></a>
+          <a target="_blank" rel="noopener" style="color:#fff" href="https://www.facebook.com/profile.php?id=61592211756851"><svg viewBox="0 0 24 24" fill="currentColor" ><path d="M22 12a10 10 0 1 0-11.5 9.87v-6.98H7.9V12h2.6V9.8c0-2.56 1.53-3.98 3.87-3.98 1.12 0 2.3.2 2.3.2v2.5h-1.3c-1.28 0-1.68.8-1.68 1.61V12h2.86l-.46 2.89h-2.4v6.98A10 10 0 0 0 22 12z"/></svg></a>
+          <a target="_blank" rel="noopener" style="color:#fff" href="https://www.instagram.com/kprlaserfabrication"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a target="_blank" rel="noopener" style="color:#fff" href="https://www.linkedin.com/in/pranitha-rani-kondaveety-21a1b419/"><svg viewBox="0 0 24 24" fill="currentColor" ><path d="M6.94 6.5a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM5 8.5h4V21H5V8.5zm7 0h3.8v1.7h.05c.53-1 1.83-2 3.77-2 4.03 0 4.78 2.65 4.78 6.1V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21h-4V8.5z"/></svg></a>
         </div>
       </div>
       <div>
@@ -930,7 +1045,8 @@ document.addEventListener('DOMContentLoaded',function(){
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About us</a></li>
-          <li><a href="#contact">Book online</a></li>
+          <li><a href="#gallery">Our work</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact us</a></li>
         </ul>
       </div>
@@ -946,9 +1062,9 @@ document.addEventListener('DOMContentLoaded',function(){
       <div>
         <h4>Contact</h4>
         <div class="footer-contact">
-          <span>Plot No. 33/B, IDA, Phase 3, Cherlapally, HCL, Hyderabad, Telangana, 500051</span>
-          <span>Pranitha.rmsi@gmail.com</span>
-          <span>+91 9963098624</span>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Plot No. 33/B, IDA, Phase 3, Cherlapally, HCL, Hyderabad, Telangana, 500051</span></div>
+          <a href="mailto:Pranitha.rmsi@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>Pranitha.rmsi@gmail.com</span></a>
+          <a href="tel:+919963098624"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>+91 9963098624</span></a>
         </div>
       </div>
     </div>
@@ -969,5 +1085,39 @@ document.querySelectorAll('.faq-item').forEach(item=>{
 });
 </script>
 
+<script>
+(function(){
+  function toggle(btnId,gridId,openTxt,closeTxt,scrollEl){
+    var b=document.getElementById(btnId),g=document.getElementById(gridId);
+    if(!b||!g)return;
+    b.addEventListener('click',function(){
+      var open=g.classList.toggle('show-all');
+      b.classList.toggle('open',open);
+      b.setAttribute('aria-expanded',open);
+      b.querySelector('span').textContent=open?closeTxt:openTxt;
+      if(open){g.querySelectorAll('.testimonial-card').forEach(function(c){c.classList.add('in-view');});}
+      else if(scrollEl){document.getElementById(scrollEl).scrollIntoView({behavior:'smooth',block:'start'});}
+    });
+  }
+  toggle('reviewsToggle','reviewsGrid','Show more reviews','Show fewer reviews');
+  toggle('galleryToggle','galleryGrid','Show more work','Show less','gallery');
+
+  var lb=document.getElementById('lightbox');if(!lb)return;
+  var img=lb.querySelector('img'),cap=lb.querySelector('.lb-cap'),idx=0,list=[];
+  function vis(){return Array.prototype.filter.call(document.querySelectorAll('#galleryGrid .g-item'),function(e){return e.offsetParent!==null;});}
+  function show(i){list=vis();idx=(i+list.length)%list.length;var f=list[idx];img.src=f.dataset.full;img.alt=f.dataset.title;cap.innerHTML=f.dataset.title;}
+  function open(el){list=vis();show(list.indexOf(el));lb.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){lb.classList.remove('open');document.body.style.overflow='';img.src='';}
+  document.querySelectorAll('#galleryGrid .g-item').forEach(function(el){el.addEventListener('click',function(){open(el);});});
+  lb.querySelector('.lb-close').onclick=close;
+  lb.querySelector('.lb-prev').onclick=function(e){e.stopPropagation();show(idx-1);};
+  lb.querySelector('.lb-next').onclick=function(e){e.stopPropagation();show(idx+1);};
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1);
+  });
+})();
+</script>
 </body>
 </html>
