@@ -278,6 +278,10 @@
   .footer-grid a{font-size:14px;color:#A1A1AA;transition:color .15s,padding-left .15s;}
   .footer-grid ul a:hover{color:var(--fa);padding-left:4px;}
   .footer-logo{display:inline-flex;align-items:center;gap:10px;}
+  .footer-logo .brand{display:flex;flex-direction:column;line-height:1;padding-left:12px;margin-left:2px;border-left:1.5px solid #2A2A32;}
+  .footer-logo .brand b{font-size:26px;background:linear-gradient(100deg,#fff 10%,var(--fa) 95%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#fff;}
+  .footer-logo .brand b::after{background:linear-gradient(90deg,var(--fa),rgba(59,139,255,0));}
+  .footer-logo .brand small{color:#8B8B95;font-size:9px;}
   .footer-desc{font-size:14px;color:#8B8B95;margin-bottom:16px;max-width:300px;line-height:1.65;}
   .footer-contact{font-size:14px;display:flex;flex-direction:column;gap:14px;}
   .footer-contact div,.footer-contact a{display:flex;gap:12px;align-items:flex-start;color:#A1A1AA;}
@@ -1038,9 +1042,9 @@ document.addEventListener('DOMContentLoaded',function(){
     </div>
     <div class="footer-grid">
       <div>
-        <div class="footer-logo">
-          <img src="assets/logo.png" alt="KPR Design &amp; Laser" style="height:84px;width:auto;display:block;">
-        </div>
+        <a class="footer-logo" href="#home" aria-label="KPR Design &amp; Laser">
+          <img src="assets/logo.png" alt="" style="height:50px;width:auto;display:block;"><span class="brand"><b>KPR</b><small>Design &amp; Laser</small></span>
+        </a>
         <p class="footer-desc" style="margin-top:16px;">High-precision CNC manufacturing and engineering solutions, delivering industry-leading quality for complex industrial requirements.</p>
         <div class="social-row">
           <a target="_blank" rel="noopener" style="color:#fff" href="https://www.facebook.com/profile.php?id=61592211756851"><svg viewBox="0 0 24 24" fill="currentColor" ><path d="M22 12a10 10 0 1 0-11.5 9.87v-6.98H7.9V12h2.6V9.8c0-2.56 1.53-3.98 3.87-3.98 1.12 0 2.3.2 2.3.2v2.5h-1.3c-1.28 0-1.68.8-1.68 1.61V12h2.86l-.46 2.89h-2.4v6.98A10 10 0 0 0 22 12z"/></svg></a>
