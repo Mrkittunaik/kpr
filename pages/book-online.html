@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book online | KPR Design &amp; Laser</title>
+<meta name="description" content="Book a job or request a quote from KPR Design &amp; Laser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Orbitron:wght@800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo-badge" href="../index.html" aria-label="KPR Design &amp; Laser"><span class="logo-mark" role="img" aria-label="KPR crown logo" style="height:42px;"></span><span class="brand"><b>KPR</b><small>Design &amp; Laser</small></span></a>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="about.html">About us</a>
+      <div class="nav-dd">
+        <a href="../index.html#services" class="nav-dd-toggle" aria-haspopup="true">Services <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-dd-menu"><a href="powder-coating.html">Powder coating</a><a href="bending.html">Bending</a><a href="laser-cutting.html">Cutting</a><a href="fabrication.html">Fabrication</a></div>
+      </div>
+      <a href="industries.html">Industries</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact us</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="book-online.html" class="btn btn-outline">Book online</a>
+      <a href="contact.html" class="btn btn-primary">Get a quote</a>
+    </div>
+    <button class="mobile-toggle" id="mtoggle" aria-label="Toggle menu" aria-expanded="false" onclick="
+      document.getElementById('mmenu').classList.toggle('open');
+      this.classList.toggle('open');
+      this.setAttribute('aria-expanded', this.classList.contains('open'));
+    ">
+      <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="container mobile-menu" id="mmenu">
+    <a href="../index.html">Home</a>
+    <a href="about.html">About us</a>
+    <details class="m-dd">
+      <summary>Services <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <a href="powder-coating.html">Powder coating</a><a href="bending.html">Bending</a><a href="laser-cutting.html">Cutting</a><a href="fabrication.html">Fabrication</a>
+    </details>
+    <a href="industries.html">Industries</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact us</a>
+    <a href="book-online.html" class="active">Book online</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><span>Book online</span></nav>
+    <h1>Book online</h1>
+    <p>Request a quote or book your job in a minute.</p>
+  </div>
+</section>
+
+<section class="pg-section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="form-card">
+        <h2>Booking request</h2>
+        <p>Fill in the details and send them to us on WhatsApp.</p>
+        <form data-wa="Hi, I would like to book a job.">
+          <label>Your name<input type="text" name="name" data-label="Name" placeholder="Your name" required autocomplete="name"></label>
+          <div class="row2">
+            <label>Phone number<input type="tel" name="phone" data-label="Phone" placeholder="Phone number" required autocomplete="tel"></label>
+            <label>Email (optional)<input type="email" name="email" data-label="Email" placeholder="you@example.com" autocomplete="email"></label>
+          </div>
+          <div class="row2">
+            <label>Service<select name="service" data-label="Service" required>
+              <option value="">Select a service</option>
+              <option>CNC Laser Cutting</option>
+              <option>CNC Bending</option>
+              <option>Sheet Metal Fabrication</option>
+              <option>Powder Coating &amp; Finishing</option>
+              <option>Not sure yet</option>
+            </select></label>
+            <label>Preferred date (optional)<input type="date" name="date" data-label="Preferred date"></label>
+          </div>
+          <label>Project details<textarea rows="4" name="details" data-label="Project details" placeholder="Material, thickness, quantity, anything else we should know"></textarea></label>
+          <button type="submit">Send booking on WhatsApp</button>
+        </form>
+      </div>
+      <div>
+        <h2 class="sub-title" style="margin-bottom:14px;">What happens next</h2>
+        <div class="steps">
+          <div class="step"><div><h4>Send your details</h4><p>Submit the form and your request opens in WhatsApp.</p></div></div>
+          <div class="step"><div><h4>We review your requirement</h4><p>Our team checks your drawing or description and confirms details with you.</p></div></div>
+          <div class="step"><div><h4>Get pricing and lead time</h4><p>We aim to get back to you within 24 hours.</p></div></div>
+        </div>
+        <p style="margin-top:18px;font-size:14.5px;color:var(--gray-600);">Prefer to talk? Call <a href="tel:+919963098624" style="color:var(--blue-600);font-weight:600;">+91 9963098624</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-cta">
+      <div>
+        <h3>Got a drawing? <span>Let&rsquo;s cut it.</span></h3>
+        <p>Share your file and get a quote from our team, fast.</p>
+      </div>
+      <div class="footer-cta-actions">
+        <a class="f-btn" href="contact.html">Get a quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="f-btn ghost" href="https://wa.me/919963098624" target="_blank" rel="noopener">WhatsApp us</a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div>
+        <a class="footer-logo" href="../index.html" aria-label="KPR Design &amp; Laser">
+          <span class="logo-mark" role="img" aria-label="KPR crown logo" style="height:50px;"></span><span class="brand"><b>KPR</b><small>Design &amp; Laser</small></span>
+        </a>
+        <p class="footer-desc" style="margin-top:16px;">High-precision CNC manufacturing and engineering solutions, delivering industry-leading quality for complex industrial requirements.</p>
+        <div class="social-row">
+          <a target="_blank" rel="noopener" style="color:#fff" href="https://www.facebook.com/profile.php?id=61592211756851"><svg viewBox="0 0 24 24" fill="currentColor" ><path d="M22 12a10 10 0 1 0-11.5 9.87v-6.98H7.9V12h2.6V9.8c0-2.56 1.53-3.98 3.87-3.98 1.12 0 2.3.2 2.3.2v2.5h-1.3c-1.28 0-1.68.8-1.68 1.61V12h2.86l-.46 2.89h-2.4v6.98A10 10 0 0 0 22 12z"/></svg></a>
+          <a target="_blank" rel="noopener" style="color:#fff" href="https://www.instagram.com/kprlaserfabrication"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a target="_blank" rel="noopener" style="color:#fff" href="https://www.linkedin.com/in/pranitha-rani-kondaveety-21a1b419/"><svg viewBox="0 0 24 24" fill="currentColor" ><path d="M6.94 6.5a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM5 8.5h4V21H5V8.5zm7 0h3.8v1.7h.05c.53-1 1.83-2 3.77-2 4.03 0 4.78 2.65 4.78 6.1V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21h-4V8.5z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="gallery.html">Our work</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+          <li><a href="book-online.html">Book online</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="laser-cutting.html">CNC laser cutting</a></li>
+          <li><a href="bending.html">Precision bending</a></li>
+          <li><a href="fabrication.html">Sheet metal fabrication</a></li>
+          <li><a href="powder-coating.html">Powder coating</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <div class="footer-contact">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Plot No. 33/B, IDA, Phase 3, Cherlapally, HCL, Hyderabad, Telangana, 500051</span></div>
+          <a href="mailto:Pranitha.rmsi@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>Pranitha.rmsi@gmail.com</span></a>
+          <a href="tel:+919963098624"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>+91 9963098624</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 KPR Design &amp; Laser. All rights reserved.</span>
+      <span>Built for precision manufacturing</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>
