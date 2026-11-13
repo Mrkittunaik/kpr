@@ -77,3 +77,39 @@ document.querySelectorAll('form[data-wa]').forEach(function(f){
     var b=f.querySelector('button[type=submit]');if(b){b.textContent='Opening WhatsApp\u2026';}
   });
 });
+
+
+/* WhatsApp chat popup (opens from the floating WhatsApp button) */
+(function(){
+  var fc=document.querySelector('.float-contact');if(!fc)return;
+  var wa=fc.querySelector('.fc-wa');if(!wa)return;
+  var pop=document.createElement('div');
+  pop.className='wa-popup';pop.hidden=true;
+  pop.setAttribute('role','dialog');pop.setAttribute('aria-label','Chat on WhatsApp');
+  pop.innerHTML=
+    '<div class="wa-head"><div class="wa-avatar">K</div>'+
+    '<div class="wa-who"><strong>KPR Design &amp; Laser</strong><span>Chat on WhatsApp</span></div>'+
+    '<button type="button" class="wa-close" aria-label="Close chat">&times;</button></div>'+
+    '<div class="wa-body"><div class="wa-bubble">Hi there &#128075;<br>How can we help you today? Share your requirement and we will get back to you.</div></div>'+
+    '<a class="wa-start" href="'+wa.getAttribute('href')+'" target="_blank" rel="noopener">Start chat</a>';
+  fc.appendChild(pop);
+
+  function setOpen(o){pop.hidden=!o;wa.setAttribute('aria-expanded',o?'true':'false');}
+  wa.setAttribute('aria-expanded','false');
+  wa.addEventListener('click',function(e){e.preventDefault();setOpen(pop.hidden);});
+  pop.querySelector('.wa-close').addEventListener('click',function(){setOpen(false);});
+  pop.querySelector('.wa-start').addEventListener('click',function(){setOpen(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
+  document.addEventListener('click',function(e){if(!pop.hidden&&!fc.contains(e.target))setOpen(false);});
+
+  /* show once per visit, after a short delay */
+  var seen=false;try{seen=sessionStorage.getItem('waPopupSeen')==='1';}catch(err){}
+  if(!seen){
+    setTimeout(function(){
+      var lb=document.getElementById('lightbox');
+      if(lb&&lb.classList.contains('open'))return;
+      setOpen(true);
+      try{sessionStorage.setItem('waPopupSeen','1');}catch(err){}
+    },6000);
+  }
+})();
