@@ -113,3 +113,64 @@ document.querySelectorAll('form[data-wa]').forEach(function(f){
     },6000);
   }
 })();
+
+
+/* ===== Auto-update: reload the page when the website has been updated ===== */
+(function(){
+  if(!/^https?:$/.test(location.protocol)) return;          // skip file:// previews
+  var CHECK_MS=30000;                                        // check every 30s
+  var baseline=null, busy=false;
+
+  function hash(str){var h=5381,i=str.length;while(i)h=(h*33)^str.charCodeAt(--i);return (h>>>0).toString(36)+str.length;}
+  function bust(u){return u+(u.indexOf('?')>-1?'&':'?')+'_=' + Date.now();}
+  function get(u){return fetch(bust(u),{cache:'no-store',credentials:'same-origin'}).then(function(r){return r.ok?r.text():'';}).catch(function(){return '';});}
+
+  function assetUrls(){
+    var list=[];
+    document.querySelectorAll('link[rel="stylesheet"][href],script[src]').forEach(function(el){
+      var u=el.href||el.src;
+      if(u&&u.indexOf(location.origin)===0) list.push(u.split('?')[0]);
+    });
+    return list;
+  }
+
+  function signature(){
+    var urls=[location.pathname+location.search].concat(assetUrls());
+    return Promise.all(urls.map(get)).then(function(parts){
+      return parts.map(hash).join('|');
+    });
+  }
+
+  function userIsTyping(){
+    var a=document.activeElement;
+    return a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&(a.value||'').length>0;
+  }
+
+  function hardReload(){
+    // refresh the browser cache for css/js first, then reload the page
+    Promise.all(assetUrls().concat([location.href]).map(function(u){
+      return fetch(u,{cache:'reload'}).catch(function(){});
+    })).then(function(){location.reload();});
+  }
+
+  function check(){
+    if(busy||document.hidden) return;
+    busy=true;
+    signature().then(function(sig){
+      busy=false;
+      if(!sig||sig.indexOf('|')===-1&&!sig) return;
+      if(baseline===null){baseline=sig;return;}
+      if(sig!==baseline){
+        if(userIsTyping()) return;                           // don't wipe a half-filled form
+        hardReload();
+      }
+    });
+  }
+
+  window.addEventListener('load',function(){setTimeout(check,1500);});
+  setInterval(check,CHECK_MS);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)check();});
+  window.addEventListener('focus',check);
+  window.addEventListener('online',check);
+  window.addEventListener('pageshow',function(e){if(e.persisted)hardReload();}); // back/forward cache
+})();
