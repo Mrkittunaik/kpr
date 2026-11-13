@@ -386,7 +386,7 @@
     .hero-actions{order:3;flex-direction:row;gap:8px;width:100%;flex-wrap:nowrap;margin-bottom:0;padding:0 20px 20px;}
     .hero-actions .btn{width:auto;flex:1;justify-content:center;padding:9px 12px;font-size:12px;min-height:38px;border-radius:2px;}
 
-    .hero-photo-wrap{order:1;max-width:none;width:100vw;margin:0 0 0 calc(50% - 50vw);}
+    .hero-photo-wrap{order:1;max-width:none;width:100%;margin:0;}
     .hero-photo{border-radius:0;box-shadow:none;aspect-ratio:1/1;}
     .hero-photo img{object-position:top center;}
 
@@ -629,3 +629,21 @@
 .float-contact a.wa-start:hover,.float-contact a.wa-start:focus-visible{background:#1ebe5b;transform:none;box-shadow:none;}
 @keyframes wa-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.float-contact .wa-popup{animation:none}}
+
+
+/* ===== Mobile fit + floating-icon fixes ===== */
+html{overflow-x:clip;-webkit-text-size-adjust:100%;}
+body{overflow-x:clip;max-width:100%;}
+img,video,iframe,svg{max-width:100%;}
+h1,h2,h3,h4,p{overflow-wrap:break-word;}
+@media(max-width:767px){
+  .hero-copy h1{font-size:clamp(28px,8.2vw,40px);}
+  .hero-copy{padding-right:64px;}
+  .hero-copy h1,.hero-copy p{padding-right:0;}
+  .hero-actions{padding-right:64px;}
+  .float-contact{right:10px;gap:8px;bottom:calc(12px + env(safe-area-inset-bottom,0px));}
+  .float-contact a{width:44px;height:44px;box-shadow:0 4px 12px rgba(0,0,0,.3);}
+  .float-contact svg{width:22px;height:22px;}
+  .float-contact .wa-popup{right:0;width:min(290px,calc(100vw - 20px));}
+  footer{padding-bottom:calc(70px + env(safe-area-inset-bottom,0px));}
+}
