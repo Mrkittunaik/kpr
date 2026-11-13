@@ -1,0 +1,29 @@
+.cp-hero{padding:56px 0 40px;background:linear-gradient(180deg,var(--blue-50),#fff)}
+.cp-back{display:inline-block;margin-bottom:20px;font-weight:600;color:var(--blue-600,#1d5fd0);text-decoration:none}
+.cp-hero-grid{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.cp-hero h1{font-size:clamp(30px,5vw,52px);margin-top:12px;line-height:1.1}
+.cp-logo{background:#fff;border:1px solid #e3e9f4;border-radius:16px;padding:24px 32px;box-shadow:0 8px 24px rgba(20,50,110,.06)}
+.cp-logo img{display:block;max-height:110px;max-width:260px;height:auto;width:auto}
+.cp-two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.cp-two h2,.cp-h{margin-bottom:14px}
+.cp-h{margin-bottom:28px;text-align:center}
+.cp-grid{display:grid;gap:20px}
+.cp-grid-2{grid-template-columns:repeat(2,1fr)}
+.cp-grid-3{grid-template-columns:repeat(3,1fr)}
+.cp-grid-4{grid-template-columns:repeat(4,1fr)}
+.cp-card{background:#fff;border:1px solid #e3e9f4;border-radius:14px;padding:24px}
+.cp-card h3{margin-bottom:8px;font-size:18px}
+.cp-card p{margin:0;color:var(--gray-600,#5b6578)}
+.cp-step b{display:inline-flex;width:34px;height:34px;border-radius:50%;background:var(--blue-600,#1d5fd0);color:#fff;align-items:center;justify-content:center;margin-bottom:12px}
+.cp-whyrow{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.cp-why{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e3e9f4;border-radius:999px;padding:14px 24px;font-weight:600}
+.cp-why svg{color:var(--blue-600,#1d5fd0)}
+.cp-shot{margin:0;position:relative;border-radius:14px;overflow:hidden;border:1px solid #e3e9f4;background:#fff}
+.cp-shot img{display:block;width:100%;aspect-ratio:25/16;object-fit:cover}
+.cp-shot figcaption{padding:12px 16px;font-weight:600;display:flex;gap:10px;align-items:center}
+.cp-shot figcaption span{color:var(--blue-600,#1d5fd0);font-family:'Space Grotesk',sans-serif}
+.cp-cta{text-align:center;background:var(--blue-50)}
+.cp-cta p{margin:8px 0 22px}
+.cp-cta .btn{margin:0 6px}
+@media(max-width:900px){.cp-grid-4{grid-template-columns:repeat(2,1fr)}.cp-grid-3{grid-template-columns:repeat(2,1fr)}.cp-two{grid-template-columns:1fr}}
+@media(max-width:560px){.cp-grid-2,.cp-grid-3,.cp-grid-4{grid-template-columns:1fr}}
