@@ -25,5 +25,29 @@
 .cp-cta{text-align:center;background:var(--blue-50)}
 .cp-cta p{margin:8px 0 22px}
 .cp-cta .btn{margin:0 6px}
-@media(max-width:900px){.cp-grid-4{grid-template-columns:repeat(2,1fr)}.cp-grid-3{grid-template-columns:repeat(2,1fr)}.cp-two{grid-template-columns:1fr}}
-@media(max-width:560px){.cp-grid-2,.cp-grid-3,.cp-grid-4{grid-template-columns:1fr}}
+*{-webkit-tap-highlight-color:transparent}
+.cp-hero,.cp-two,section .container{overflow-wrap:anywhere}
+.cp-shot img,.cp-logo img{max-width:100%}
+@media(max-width:900px){
+.cp-grid-4{grid-template-columns:repeat(2,1fr)}
+.cp-grid-3{grid-template-columns:repeat(2,1fr)}
+.cp-two{grid-template-columns:1fr;gap:28px}
+.cp-hero{padding:40px 0 28px}
+}
+@media(max-width:640px){
+.cp-hero{padding:28px 0 20px}
+.cp-hero-grid{flex-direction:column-reverse;align-items:flex-start;gap:18px}
+.cp-hero h1{font-size:28px;word-break:break-word}
+.cp-logo{padding:16px 20px;width:100%;box-sizing:border-box;display:flex;justify-content:center}
+.cp-logo img{max-height:80px;max-width:100%}
+.cp-grid{gap:14px}
+.cp-grid-2,.cp-grid-3,.cp-grid-4{grid-template-columns:1fr}
+.cp-card{padding:18px}
+.cp-h{font-size:24px;margin-bottom:20px}
+.cp-whyrow{flex-direction:column;align-items:stretch}
+.cp-why{border-radius:14px;padding:14px 18px}
+.cp-cta{padding-left:4px;padding-right:4px}
+.cp-cta h2{font-size:24px}
+.cp-cta .btn{display:block;margin:10px 0;text-align:center;box-sizing:border-box;width:100%;padding-top:14px;padding-bottom:14px}
+.cp-back{padding:8px 0}
+}
