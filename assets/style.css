@@ -255,6 +255,9 @@
   .g-item:hover .g-open{transform:scale(1.12) rotate(-45deg);background:var(--blue-500);}
   .g-more{display:none;}
   .gallery-grid.show-all .g-more{display:block;}
+  .clients-grid .c-more{display:none;}
+  .clients-grid.show-all .c-more,.clients-grid.show-all .c-more-d{display:block;}
+  @media(min-width:901px){.clients-grid .c-more-d{display:none;}}
   #lightbox{position:fixed;inset:0;z-index:200;background:rgba(3,8,18,.94);display:none;align-items:center;justify-content:center;flex-direction:column;padding:24px;}
   #lightbox.open{display:flex;}
   #lightbox img{max-width:min(1100px,92vw);max-height:76vh;border-radius:6px;object-fit:contain;}
