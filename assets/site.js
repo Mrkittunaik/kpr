@@ -39,12 +39,13 @@ document.querySelectorAll('.faq-item').forEach(item=>{
       b.classList.toggle('open',open);
       b.setAttribute('aria-expanded',open);
       b.querySelector('span').textContent=open?closeTxt:openTxt;
-      if(open){g.querySelectorAll('.testimonial-card').forEach(function(c){c.classList.add('in-view');});}
+      if(open){g.querySelectorAll('.testimonial-card,.client-card').forEach(function(c){c.classList.add('in-view');});}
       else if(scrollEl){document.getElementById(scrollEl).scrollIntoView({behavior:'smooth',block:'start'});}
     });
   }
   toggle('reviewsToggle','reviewsGrid','Show more reviews','Show fewer reviews');
   toggle('galleryToggle','galleryGrid','Show more work','Show less','gallery');
+  toggle('clientsToggle','clientsGrid','View more clients','Show fewer clients','clients');
 
   var lb=document.getElementById('lightbox');if(!lb)return;
   var img=lb.querySelector('img'),cap=lb.querySelector('.lb-cap'),idx=0,list=[];
@@ -112,4 +113,20 @@ document.querySelectorAll('form[data-wa]').forEach(function(f){
       try{sessionStorage.setItem('waPopupSeen','1');}catch(err){}
     },6000);
   }
+})();
+
+
+/* Hard refresh on manual reload: re-download css/js/images so nothing stale stays cached. Runs once per reload, never auto-refreshes. */
+(function(){
+  if(!/^https?:$/.test(location.protocol)||!window.performance||!performance.getEntriesByType) return;
+  var nav=performance.getEntriesByType('navigation')[0];
+  if(!nav||nav.type!=='reload') return;
+  window.addEventListener('load',function(){
+    var urls={};
+    document.querySelectorAll('link[rel="stylesheet"][href],script[src],img[src]').forEach(function(el){
+      var u=el.href||el.src;
+      if(u&&u.indexOf(location.origin)===0) urls[u]=1;
+    });
+    Object.keys(urls).forEach(function(u){fetch(u,{cache:'reload'}).catch(function(){});});
+  });
 })();
