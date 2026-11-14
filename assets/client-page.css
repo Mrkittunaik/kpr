@@ -7,13 +7,14 @@
 .cp-sec{padding:44px 0}
 .cp-alt{background:var(--cpbg)}
 .cp em{font-style:normal;color:var(--cpb)}
-.cp-hero{padding:28px 0 36px;background:linear-gradient(180deg,var(--cpbg),#fff)}
-.cp-back{display:inline-block;padding:8px 0;margin-bottom:12px;font-weight:600;color:var(--cpb);text-decoration:none}
-.cp-hero-grid{display:flex;flex-direction:column-reverse;gap:20px;align-items:stretch}
-.cp-tag{display:inline-block;padding:6px 14px;border-radius:999px;background:#fff;border:1px solid var(--cpline);color:var(--cpb);font-weight:600;font-size:13px}
-.cp-hero h1{margin-top:14px;font-size:28px;line-height:1.15;letter-spacing:.02em;overflow-wrap:anywhere}
-.cp-demo{margin-top:12px;font-size:13px;color:var(--cpmut)}
-.cp-logo{height:140px;display:flex;align-items:center;justify-content:center;padding:20px;background:#fff;border:1px solid var(--cpline);border-radius:16px;box-shadow:0 8px 24px rgba(20,50,110,.06)}
+.cp-hero{padding:22px 0 48px;background:linear-gradient(rgba(0,20,110,.9),rgba(0,26,128,.84)),url(new/machine-hall-wide.jpg) center/cover no-repeat;color:#fff}
+.cp-back{display:inline-block;padding:8px 0;margin-bottom:12px;font-weight:600;color:#fff;text-decoration:none}
+.cp-hero-grid{display:flex;flex-direction:column-reverse;gap:22px;align-items:center;text-align:center;max-width:780px;margin:0 auto}
+.cp-hero-text{display:flex;flex-direction:column;align-items:center}
+.cp-tag{order:2;display:block;margin-top:12px;padding:0;background:none;border:0;color:#cfe0ff;font-weight:700;font-size:clamp(17px,3.6vw,26px)}
+.cp-hero h1{order:1;margin-top:0;color:#fff;font-size:32px;line-height:1.1;letter-spacing:-.5px;font-weight:800;overflow-wrap:anywhere}
+.cp-demo{order:3;margin-top:14px;max-width:520px;font-size:13.5px;line-height:1.5;color:#dbe3ff}
+.cp-logo{height:96px;display:flex;align-items:center;justify-content:center;padding:14px 26px;background:#fff;border:0;border-radius:3px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
 .cp-logo img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain}
 .cp-two{display:grid;gap:24px}
 .cp-block{background:#fff;border:1px solid var(--cpline);border-radius:16px;padding:24px}
@@ -40,17 +41,16 @@
 .cp-cta-btns .btn{display:flex;align-items:center;justify-content:center;min-height:48px;text-align:center}
 @media(min-width:600px){
  .cp-c2,.cp-c3,.cp-c4{grid-template-columns:repeat(2,1fr)}
- .cp-hero h1{font-size:36px}
+ .cp-hero h1{font-size:46px}
  .cp-cta-btns{flex-direction:row;justify-content:center;max-width:none}
  .cp-cta-btns .btn{min-width:180px}
 }
 @media(min-width:900px){
  .cp-wrap{padding:0 32px}
  .cp-sec{padding:64px 0}
- .cp-hero{padding:44px 0 52px}
- .cp-hero-grid{flex-direction:row;align-items:center;justify-content:space-between;gap:40px}
- .cp-hero h1{font-size:48px}
- .cp-logo{height:170px;min-width:300px;padding:28px 40px}
+ .cp-hero{padding:30px 0 72px}
+ .cp-hero h1{font-size:64px}
+ .cp-logo{height:116px;padding:18px 36px}
  .cp-two{grid-template-columns:1fr 1fr;gap:28px}
  .cp-block{padding:32px}
  .cp-h,.cp-cta h2{font-size:32px}
